@@ -9,7 +9,7 @@ A personal blog for a high school student going into computer science. Weekly le
 
 | # | Feature | Phase | Status |
 |---|---------|-------|--------|
-| 1 | Stack & architecture | Foundation | planned |
+| 1 | Stack & architecture | Foundation | in-progress |
 | 2 | Coding standards & tooling | Foundation | planned |
 | 3 | Design system | Foundation | planned |
 | 4 | Data model | Foundation | planned |
@@ -24,10 +24,11 @@ A personal blog for a high school student going into computer science. Weekly le
 
 ## Foundation
 
-### 1. Stack & architecture · needs a decision
+### 1. Stack & architecture
 Decide the full stack and scaffold a runnable project so every later feature builds on real structure.
 **Done when:** the stack is recorded in a spec, and the empty scaffold boots locally and passes build.
-- [ ] Decide the stack (spec): `/architect stack & architecture`
+**Spec**: [0001](../specs/0001-stack-and-architecture.md)
+- [x] Decide the stack (spec): `/architect stack & architecture`
 - [ ] Scaffold from the decision: `/develop stack & architecture`
 - [ ] Smoke check it runs: `/test`
 
