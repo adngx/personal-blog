@@ -1,7 +1,7 @@
 # 0002. Design system
 
 **Date**: 2026-07-12
-**Status**: In Progress
+**Status**: Accepted
 
 ## Summary
 
