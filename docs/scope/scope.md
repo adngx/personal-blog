@@ -13,7 +13,7 @@ A personal blog for a high school student going into computer science. Weekly le
 | 2   | Coding standards & tooling | Foundation | done    |
 | 3   | Design system              | Foundation | done    |
 | 4   | Data model                 | Foundation | done    |
-| 5   | Walking skeleton           | Release 1  | planned |
+| 5   | Walking skeleton           | Release 1  | done    |
 | 6   | Post page                  | Release 1  | planned |
 | 7   | Homepage                   | Release 1  | planned |
 | 8   | About page                 | Release 1  | planned |
@@ -83,8 +83,8 @@ The thinnest blog a reader would actually use: read a post, browse the listing, 
 One sample post renders through the full stack with minimal styling. Proves content collections, markdown processing, and page rendering all connect end to end.
 **Done when:** a sample post appears at a URL with correct title, date, and body content.
 
-- [ ] Build it: `/develop walking skeleton`
-- [ ] Verify it: `/check verify walking skeleton`
+- [x] Build it: `/develop walking skeleton`
+- [x] Verify it: `/check verify walking skeleton`
 
 ### 6. Post page · needs a decision
 
