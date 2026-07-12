@@ -14,7 +14,7 @@ A personal blog for a high school student going into computer science. Weekly le
 | 3   | Design system              | Foundation | done    |
 | 4   | Data model                 | Foundation | done    |
 | 5   | Walking skeleton           | Release 1  | done    |
-| 6   | Post page                  | Release 1  | planned |
+| 6   | Post page                  | Release 1  | done    |
 | 7   | Homepage                   | Release 1  | planned |
 | 8   | About page                 | Release 1  | planned |
 | 9   | SEO enhancements           | Release 2  | planned |
@@ -86,15 +86,19 @@ One sample post renders through the full stack with minimal styling. Proves cont
 - [x] Build it: `/develop walking skeleton`
 - [x] Verify it: `/check verify walking skeleton`
 
-### 6. Post page · needs a decision
+### 6. Post page · done · spec [0004](../specs/0004-post-page/index.md)
 
 Full post template with metadata (title, date, tags), reading experience, and social card preview. The core deliverable of the blog.
 **Done when:** a post page renders with all frontmatter metadata, readable typography, and a social card preview.
 
-- [ ] Design it (spec): `/architect post page`
-- [ ] Build it: `/develop post page`
-- [ ] Verify it: `/check verify post page`
-- [ ] Test it: `/test post page`
+- [x] Design it (spec): `/architect post page`
+- [x] Build it: `/develop post page`
+  - [x] Install @tailwindcss/typography and shadcn Badge components (AC-4, AC-5)
+  - [x] Update Layout.astro with OG and Twitter card meta tags (AC-6)
+  - [x] Update post page template with all metadata display (AC-1, AC-2, AC-3, AC-4, AC-8)
+  - [x] Update footer and add empty body fallback (AC-7, AC-9)
+- [x] Verify it: `/check verify post page`
+- [x] Test it: `/test post page`
 
 ### 7. Homepage · needs a decision
 

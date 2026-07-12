@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { Badge } from "../../components/ui/badge";
+import { formatDate } from "../../lib/format-date";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -16,28 +18,50 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  ogTitle={post.data.title}
+  ogDescription={post.data.description}
+  ogType="article"
+>
   <article
     id="main-content"
     class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
   >
     <header class="mb-8">
-      <h1 class="text-4xl font-bold">{post.data.title}</h1>
+      <h1 class="text-4xl font-bold break-words">{post.data.title}</h1>
       <time class="text-muted-foreground mt-2 block text-sm">
-        {
-          post.data.pubDate.toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-        }
+        {formatDate(post.data.pubDate)}
       </time>
+      {
+        post.data.updatedDate && (
+          <p class="text-muted-foreground mt-1 text-sm">
+            Updated: {formatDate(post.data.updatedDate)}
+          </p>
+        )
+      }
+      {
+        post.data.tags && post.data.tags.length > 0 && (
+          <div class="mt-4 flex flex-wrap gap-2">
+            {post.data.tags.map((tag) => (
+              <Badge variant="secondary">{tag}</Badge>
+            ))}
+          </div>
+        )
+      }
     </header>
-    <div class="prose prose-gray max-w-none">
-      <Content />
+    <div class="prose prose-gray dark:prose-invert max-w-none">
+      {
+        post.body && post.body.trim() ? (
+          <Content />
+        ) : (
+          <p>No content available.</p>
+        )
+      }
     </div>
     <footer class="border-border mt-12 border-t pt-4">
-      <a href="/" class="text-link hover:underline">← Back to home</a>
+      <a href="/" class="text-link hover:underline">Back to home</a>
     </footer>
   </article>
 </Layout>

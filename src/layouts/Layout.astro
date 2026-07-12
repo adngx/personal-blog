@@ -5,10 +5,23 @@ import SiteHeader from "../components/site-header.astro";
 interface Props {
   title: string;
   description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogType?: string;
+  ogUrl?: string;
 }
 
-const { title, description = "A personal blog about computer science" } =
-  Astro.props;
+const {
+  title,
+  description = "A personal blog about computer science",
+  ogTitle,
+  ogDescription,
+  ogType = "website",
+  ogUrl,
+} = Astro.props;
+
+const siteUrl = Astro.site?.href ?? "https://example.com";
+const currentUrl = ogUrl ?? new URL(Astro.url.pathname, siteUrl).href;
 ---
 
 <!doctype html>
@@ -17,6 +30,13 @@ const { title, description = "A personal blog about computer science" } =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={currentUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={ogTitle ?? title} />
+    <meta name="twitter:description" content={ogDescription ?? description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script is:inline>
       (function () {

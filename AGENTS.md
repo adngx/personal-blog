@@ -28,7 +28,7 @@ npm run build
 npm run preview
 
 # Test
-npx vitest
+npm run test
 ```
 
 ## Specs
