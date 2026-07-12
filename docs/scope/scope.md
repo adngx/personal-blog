@@ -7,20 +7,20 @@ A personal blog for a high school student going into computer science. Weekly le
 
 ## At a glance
 
-| #   | Feature                    | Phase      | Status      |
-| --- | -------------------------- | ---------- | ----------- |
-| 1   | Stack & architecture       | Foundation | done        |
-| 2   | Coding standards & tooling | Foundation | done        |
-| 3   | Design system              | Foundation | done        |
-| 4   | Data model                 | Foundation | in-progress |
-| 5   | Walking skeleton           | Release 1  | planned     |
-| 6   | Post page                  | Release 1  | planned     |
-| 7   | Homepage                   | Release 1  | planned     |
-| 8   | About page                 | Release 1  | planned     |
-| 9   | SEO enhancements           | Release 2  | planned     |
-| 10  | Privacy policy page        | Release 2  | planned     |
-| 11  | Page view counter          | Release 2  | planned     |
-| 12  | Newsletter signup          | Release 3  | planned     |
+| #   | Feature                    | Phase      | Status  |
+| --- | -------------------------- | ---------- | ------- |
+| 1   | Stack & architecture       | Foundation | done    |
+| 2   | Coding standards & tooling | Foundation | done    |
+| 3   | Design system              | Foundation | done    |
+| 4   | Data model                 | Foundation | done    |
+| 5   | Walking skeleton           | Release 1  | planned |
+| 6   | Post page                  | Release 1  | planned |
+| 7   | Homepage                   | Release 1  | planned |
+| 8   | About page                 | Release 1  | planned |
+| 9   | SEO enhancements           | Release 2  | planned |
+| 10  | Privacy policy page        | Release 2  | planned |
+| 11  | Page view counter          | Release 2  | planned |
+| 12  | Newsletter signup          | Release 3  | planned |
 
 ## Foundation
 
@@ -72,7 +72,7 @@ Content collections schema for blog posts: title, date, description, tags, publi
   - [x] Filter drafts from homepage listing (AC-4)
   - [x] Filter drafts from post detail page in production (AC-5)
 - [x] Verify it: `/check verify data model`
-- [ ] Test it: `/test data model`
+- [x] Test it: `/test data model`
 
 ## Release 1: Smallest Usable Whole
 
