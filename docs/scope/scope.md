@@ -50,12 +50,12 @@ Visual language, layout primitives, base components, and dark mode toggle so the
 **Spec**: [0002](../specs/0002-design-system.md)
 
 - [x] Design it (spec): `/architect design system`
-- [ ] Build it: `/develop design system`
-  - [ ] Define design tokens and configure Tailwind theme in `src/styles/global.css` (AC-1, AC-2, AC-4)
-  - [ ] Swap Geist to self-hosted Inter via `@fontsource-variable/inter` (AC-1)
-  - [ ] Create layout containers and site header with dark mode toggle (AC-3, AC-4)
-  - [ ] Verify shadcn/ui component theming in both modes (AC-5)
-  - [ ] Replace hardcoded colors in existing pages with design tokens (AC-1, AC-2, AC-4, AC-5)
+- [x] Build it: `/develop design system`
+  - [x] Define design tokens and configure Tailwind theme in `src/styles/global.css` (AC-1, AC-2, AC-4)
+  - [x] Swap Geist to self-hosted Inter via `@fontsource-variable/inter` (AC-1)
+  - [x] Create layout containers and site header with dark mode toggle (AC-3, AC-4)
+  - [x] Verify shadcn/ui component theming in both modes (AC-5)
+  - [x] Replace hardcoded colors in existing pages with design tokens (AC-1, AC-2, AC-4, AC-5)
 - [ ] Verify it: `/check verify design system`
 - [ ] Test it: `/test design system`
 

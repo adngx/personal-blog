@@ -1,0 +1,32 @@
+---
+import { ThemeToggle } from "./theme-toggle";
+---
+
+<header class="border-border border-b">
+  <nav
+    class="mx-auto flex max-w-[var(--container-wide)] items-center justify-between px-6 py-4"
+    aria-label="Primary"
+  >
+    <a
+      href="/"
+      class="text-foreground text-lg font-semibold hover:no-underline"
+    >
+      Personal Blog
+    </a>
+    <div class="flex items-center gap-6">
+      <a
+        href="/"
+        class="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+      >
+        Blog
+      </a>
+      <a
+        href="/about"
+        class="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+      >
+        About
+      </a>
+      <ThemeToggle client:load />
+    </div>
+  </nav>
+</header>
