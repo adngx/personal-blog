@@ -2,6 +2,7 @@
 title: "Hello World"
 description: "My first blog post"
 pubDate: 2026-07-12
+tags: ["intro"]
 ---
 
 # Hello World

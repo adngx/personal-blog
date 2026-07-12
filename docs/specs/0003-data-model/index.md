@@ -1,7 +1,7 @@
 # 0003. Data model
 
 **Date**: 2026-07-12
-**Status**: Proposed
+**Status**: In Progress
 
 ## Summary
 
@@ -126,10 +126,10 @@ draft: false (published) to true (draft) and back. Binary toggle, no intermediat
 
 ## Build plan
 
-1. Update the Zod schema in `src/content.config.ts` to add `tags` as `z.array(z.string()).optional().default([])` and `draft` as `z.boolean().optional().default(false)`, satisfies **AC-1**, **AC-2**
-2. Update `src/content/posts/hello-world.md` with sample frontmatter: `tags: ["intro"]` and omit `draft` (defaults to false), satisfying **AC-3**
-3. Update `src/pages/index.astro` to filter out posts where `draft` is true using `import.meta.env.PROD` (drafts visible in dev, hidden in production build), satisfies **AC-4**
-4. Update `src/pages/posts/[id].astro` to exclude draft posts from `getStaticPaths` using the same `import.meta.env.PROD` filter, so drafts are not built as static pages in production, satisfies **AC-5**
+1. [x] Update the Zod schema in `src/content.config.ts` to add `tags` as `z.array(z.string()).optional().default([])` and `draft` as `z.boolean().optional().default(false)`, satisfies **AC-1**, **AC-2**
+2. [x] Update `src/content/posts/hello-world.md` with sample frontmatter: `tags: ["intro"]` and omit `draft` (defaults to false), satisfying **AC-3**
+3. [x] Update `src/pages/index.astro` to filter out posts where `draft` is true using `import.meta.env.PROD` (drafts visible in dev, hidden in production build), satisfies **AC-4**
+4. [x] Update `src/pages/posts/[id].astro` to exclude draft posts from `getStaticPaths` using the same `import.meta.env.PROD` filter, so drafts are not built as static pages in production, satisfies **AC-5**
 
 ## Consequences
 
