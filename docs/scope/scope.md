@@ -66,12 +66,12 @@ Content collections schema for blog posts: title, date, description, tags, publi
 **Spec**: [0003](../specs/0003-data-model/index.md)
 
 - [x] Design it (spec): `/architect data model`
-- [ ] Build it: `/develop data model`
+- [x] Build it: `/develop data model`
   - [x] Update Zod schema with tags and draft fields (AC-1, AC-2)
   - [x] Update sample post frontmatter (AC-3)
   - [x] Filter drafts from homepage listing (AC-4)
   - [x] Filter drafts from post detail page in production (AC-5)
-- [ ] Verify it: `/check verify data model`
+- [x] Verify it: `/check verify data model`
 - [ ] Test it: `/test data model`
 
 ## Release 1: Smallest Usable Whole
