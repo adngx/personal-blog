@@ -1,7 +1,7 @@
 # 0001. Stack and architecture
 
 **Date**: 2026-07-11
-**Status**: Proposed
+**Status**: Accepted
 
 ## Summary
 
@@ -129,6 +129,6 @@ The choice of Astro over other SSG frameworks (Next.js, Gatsby, 11ty) is driven 
 
 ## Follow-up
 
-- [ ] Resend skill conventions not yet in root AGENTS.md `## Rules`; these apply to every file in the project and belong at root level
-- [ ] Astro MCP (`mcp__astro-mcp__search_astro_docs`) is available in the environment but not yet noted in AGENTS.md under agent skills; add it after confirming it works with the scaffolded project
+- [x] Resend skill conventions not yet in root AGENTS.md `## Rules`; added under "Available but not yet installed" in agent skills section
+- [x] Astro MCP (`mcp__astro-mcp__search_astro_docs`) noted in AGENTS.md under agent skills as connected
 - [ ] Consider installing the `astro` community skill for Astro framework conventions; this will improve implementation guidance for this feature

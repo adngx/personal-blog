@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Home">
+  <main class="mx-auto max-w-2xl px-4 py-12">
+    <h1 class="text-4xl font-bold">Personal Blog</h1>
+    <p class="mt-4 text-lg text-gray-600">
+      Learning computer science in public.
+    </p>
+    <section class="mt-12">
+      <h2 class="text-2xl font-semibold">Posts</h2>
+      <ul class="mt-4 space-y-4">
+        {
+          posts.map((post) => (
+            <li>
+              <a
+                href={`/posts/${post.id}`}
+                class="text-lg text-blue-600 hover:underline"
+              >
+                {post.data.title}
+              </a>
+              <p class="text-sm text-gray-500">
+                {post.data.pubDate.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
+              <p class="mt-1 text-gray-600">{post.data.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

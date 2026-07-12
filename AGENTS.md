@@ -33,7 +33,7 @@ npx vitest
 
 ## Specs
 
-Stored in `docs/specs/`. Format: `docs/specs/NNNN-title.md`.
+Stored in `docs/specs/`. Format: `docs/specs/NNNN-title.md` (or `docs/specs/NNNN-title/index.md` when verify.md is present).
 
 ## Rules
 
@@ -62,6 +62,12 @@ Stored in `docs/specs/`. Format: `docs/specs/NNNN-title.md`.
 - [supabase-postgres-best-practices](.agents/skills/supabase-postgres-best-practices/): `supabase/agent-skills`, Postgres performance and RLS best practices
 - [sync](.agents/skills/sync/): `JavaScript-Mastery-Pro/skills`, reconciles AGENTS.md and scope after changes
 - [test](.agents/skills/test/): `JavaScript-Mastery-Pro/skills`, writes test suites for built or changed code
+- [resend](.agents/skills/resend/): `resend/resend-skills`, email sending and API integration
+- [resend-cli](.agents/skills/resend-cli/): `resend/resend-skills`, Resend CLI management
+
+### MCP servers (connected)
+
+- Astro MCP (`mcp__astro-mcp__search_astro_docs`): live Astro docs search
 
 ## Context files
 

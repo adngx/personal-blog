@@ -9,7 +9,7 @@ A personal blog for a high school student going into computer science. Weekly le
 
 | # | Feature | Phase | Status |
 |---|---------|-------|--------|
-| 1 | Stack & architecture | Foundation | in-progress |
+| 1 | Stack & architecture | Foundation | done |
 | 2 | Coding standards & tooling | Foundation | planned |
 | 3 | Design system | Foundation | planned |
 | 4 | Data model | Foundation | planned |
@@ -27,10 +27,10 @@ A personal blog for a high school student going into computer science. Weekly le
 ### 1. Stack & architecture
 Decide the full stack and scaffold a runnable project so every later feature builds on real structure.
 **Done when:** the stack is recorded in a spec, and the empty scaffold boots locally and passes build.
-**Spec**: [0001](../specs/0001-stack-and-architecture.md)
+**Spec**: [0001](../specs/0001-stack-and-architecture/index.md)
 - [x] Decide the stack (spec): `/architect stack & architecture`
-- [ ] Scaffold from the decision: `/develop stack & architecture`
-- [ ] Smoke check it runs: `/test`
+- [x] Scaffold from the decision: `/develop stack & architecture`
+- [x] Smoke check it runs: `/test`
 
 ### 2. Coding standards & tooling
 Capture conventions and install lint, format, pre-commit, and CI from the real scaffolded project. /audit already captured the conventions in AGENTS.md; /develop tooling installs them.
