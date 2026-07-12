@@ -7,20 +7,20 @@ A personal blog for a high school student going into computer science. Weekly le
 
 ## At a glance
 
-| #   | Feature                    | Phase      | Status  |
-| --- | -------------------------- | ---------- | ------- |
-| 1   | Stack & architecture       | Foundation | done    |
-| 2   | Coding standards & tooling | Foundation | done    |
-| 3   | Design system              | Foundation | planned |
-| 4   | Data model                 | Foundation | planned |
-| 5   | Walking skeleton           | Release 1  | planned |
-| 6   | Post page                  | Release 1  | planned |
-| 7   | Homepage                   | Release 1  | planned |
-| 8   | About page                 | Release 1  | planned |
-| 9   | SEO enhancements           | Release 2  | planned |
-| 10  | Privacy policy page        | Release 2  | planned |
-| 11  | Page view counter          | Release 2  | planned |
-| 12  | Newsletter signup          | Release 3  | planned |
+| #   | Feature                    | Phase      | Status      |
+| --- | -------------------------- | ---------- | ----------- |
+| 1   | Stack & architecture       | Foundation | done        |
+| 2   | Coding standards & tooling | Foundation | done        |
+| 3   | Design system              | Foundation | in-progress |
+| 4   | Data model                 | Foundation | planned     |
+| 5   | Walking skeleton           | Release 1  | planned     |
+| 6   | Post page                  | Release 1  | planned     |
+| 7   | Homepage                   | Release 1  | planned     |
+| 8   | About page                 | Release 1  | planned     |
+| 9   | SEO enhancements           | Release 2  | planned     |
+| 10  | Privacy policy page        | Release 2  | planned     |
+| 11  | Page view counter          | Release 2  | planned     |
+| 12  | Newsletter signup          | Release 3  | planned     |
 
 ## Foundation
 
@@ -43,13 +43,19 @@ Capture conventions and install lint, format, pre-commit, and CI from the real s
 - [x] Install the tooling: `/develop tooling`
 - [x] Check it runs clean: `/test`
 
-### 3. Design system · needs a decision
+### 3. Design system
 
 Visual language, layout primitives, base components, and dark mode toggle so the blog feels cohesive and accessible.
 **Done when:** a design spec covers type, color, spacing, components, and the dark mode toggle works with system preference detection.
+**Spec**: [0002](../specs/0002-design-system.md)
 
-- [ ] Design it (spec): `/architect design system`
+- [x] Design it (spec): `/architect design system`
 - [ ] Build it: `/develop design system`
+  - [ ] Define design tokens and configure Tailwind theme in `src/styles/global.css` (AC-1, AC-2, AC-4)
+  - [ ] Swap Geist to self-hosted Inter via `@fontsource-variable/inter` (AC-1)
+  - [ ] Create layout containers and site header with dark mode toggle (AC-3, AC-4)
+  - [ ] Verify shadcn/ui component theming in both modes (AC-5)
+  - [ ] Replace hardcoded colors in existing pages with design tokens (AC-1, AC-2, AC-4, AC-5)
 - [ ] Verify it: `/check verify design system`
 - [ ] Test it: `/test design system`
 
