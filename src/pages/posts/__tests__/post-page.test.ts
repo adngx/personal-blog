@@ -53,8 +53,8 @@ describe("post page conditional guards", () => {
   });
 
   it("tags section hidden when undefined", () => {
-    const tags: string[] | undefined = undefined;
-    expect(Boolean(tags && tags.length > 0)).toBe(false);
+    const tags: string[] | undefined = undefined as string[] | undefined;
+    expect(tags?.length ?? 0).toBe(0);
   });
 
   // AC-9: fallback when body is empty
@@ -64,13 +64,13 @@ describe("post page conditional guards", () => {
   });
 
   it("body check is falsy for empty string", () => {
-    const body = "";
-    expect(Boolean(body && body.trim())).toBe(false);
+    const body = "" as string;
+    expect(Boolean(body?.trim())).toBe(false);
   });
 
   it("body check is falsy for whitespace only", () => {
-    const body = "   \n  \t  ";
-    expect(Boolean(body && body.trim())).toBe(false);
+    const body = "   \n  \t  " as string;
+    expect(Boolean(body?.trim())).toBe(false);
   });
 });
 
