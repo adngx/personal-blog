@@ -2,12 +2,23 @@
 import Layout from "../layouts/Layout.astro";
 import { getEntry, render } from "astro:content";
 import { socialLinks } from "../data/social-links";
+import { SITE_URL, SITE_NAME } from "../env";
 
 const about = await getEntry("pages", "about");
 if (!about) {
   throw new Error("About page not found in content collection");
 }
 const { Content } = await render(about);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE_NAME,
+  url: SITE_URL,
+  sameAs: socialLinks
+    .filter((link) => link.url.startsWith("http"))
+    .map((link) => link.url),
+};
 ---
 
 <Layout title={about.data.title} description={about.data.description}>
@@ -32,4 +43,6 @@ const { Content } = await render(about);
       </ul>
     </section>
   </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </Layout>

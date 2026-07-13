@@ -4,6 +4,7 @@ import { Badge } from "../components/ui/badge";
 import { buttonVariants } from "../components/ui/button";
 import { formatDate } from "../lib/format-date";
 import { getCollection } from "astro:content";
+import { SITE_URL, SITE_NAME } from "../env";
 
 const posts = (await getCollection("posts"))
   .filter((post) => !import.meta.env.PROD || !post.data.draft)
@@ -12,26 +13,24 @@ const posts = (await getCollection("posts"))
 const featuredPost = posts[0] ?? null;
 const remainingPosts = posts.slice(1);
 
-const siteUrl = Astro.site?.href ?? "https://example.com";
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
-      name: "Personal Blog",
-      url: siteUrl,
+      name: SITE_NAME,
+      url: SITE_URL,
     },
     {
       "@type": "Blog",
-      name: "Personal Blog",
-      url: siteUrl,
+      name: SITE_NAME,
+      url: SITE_URL,
       blogPost: posts.map((post) => ({
         "@type": "BlogPosting",
         headline: post.data.title,
         datePublished: post.data.pubDate.toISOString(),
         description: post.data.description,
-        url: new URL(`/posts/${post.id}`, siteUrl).href,
+        url: new URL(`/posts/${post.id}`, SITE_URL).href,
       })),
     },
   ],

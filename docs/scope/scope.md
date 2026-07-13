@@ -7,20 +7,20 @@ A personal blog for a high school student going into computer science. Weekly le
 
 ## At a glance
 
-| #   | Feature                    | Phase      | Status  |
-| --- | -------------------------- | ---------- | ------- |
-| 1   | Stack & architecture       | Foundation | done    |
-| 2   | Coding standards & tooling | Foundation | done    |
-| 3   | Design system              | Foundation | done    |
-| 4   | Data model                 | Foundation | done    |
-| 5   | Walking skeleton           | Release 1  | done    |
-| 6   | Post page                  | Release 1  | done    |
-| 7   | Homepage                   | Release 1  | done    |
-| 8   | About page                 | Release 1  | done    |
-| 9   | SEO enhancements           | Release 2  | planned |
-| 10  | Privacy policy page        | Release 2  | planned |
-| 11  | Page view counter          | Release 2  | planned |
-| 12  | Newsletter signup          | Release 3  | planned |
+| #   | Feature                    | Phase      | Status      |
+| --- | -------------------------- | ---------- | ----------- |
+| 1   | Stack & architecture       | Foundation | done        |
+| 2   | Coding standards & tooling | Foundation | done        |
+| 3   | Design system              | Foundation | done        |
+| 4   | Data model                 | Foundation | done        |
+| 5   | Walking skeleton           | Release 1  | done        |
+| 6   | Post page                  | Release 1  | done        |
+| 7   | Homepage                   | Release 1  | done        |
+| 8   | About page                 | Release 1  | done        |
+| 9   | SEO enhancements           | Release 2  | in-progress |
+| 10  | Privacy policy page        | Release 2  | planned     |
+| 11  | Page view counter          | Release 2  | planned     |
+| 12  | Newsletter signup          | Release 3  | planned     |
 
 ## Foundation
 
@@ -129,15 +129,21 @@ Personal introduction, goals, and links. A static page with no dynamic behavior.
 
 Make the blog discoverable and compliant before promoting it.
 
-### 9. SEO enhancements · needs a decision · full
+### 9. SEO enhancements · done · full · spec [0009](../specs/0009-seo-enhancements.md)
 
 Structured data (JSON-LD), canonical URLs, Open Graph meta tags, social cards per post, sitemap.xml, and robots.txt. Full SEO so posts rank and share well.
 **Done when:** every page has valid structured data, Open Graph tags, canonical URLs, and the sitemap includes all published posts.
 
-- [ ] Design it (spec): `/architect SEO enhancements`
-- [ ] Build it: `/develop SEO enhancements`
-- [ ] Verify it: `/check verify SEO enhancements`
-- [ ] Test it: `/test SEO enhancements`
+- [x] Design it (spec): `/architect SEO enhancements`
+- [x] Build it: `/develop SEO enhancements`
+  - [x] Add env vars to Zod schema and configure Astro site (AC-10, AC-11, AC-1)
+  - [x] Update Layout.astro with canonical URL, complete OG/Twitter tags, title format (AC-1, AC-2, AC-3, AC-4)
+  - [x] Add JSON-LD to post and about pages (AC-5, AC-6, AC-7)
+  - [x] Generate OG image PNG fallback (AC-12)
+  - [x] Install @astrojs/sitemap and create robots.txt (AC-8, AC-9)
+  - [x] Write tests for SEO logic
+- [x] Verify it: `/check verify SEO enhancements`
+- [x] Test it: `/test SEO enhancements`
 
 ### 10. Privacy policy page
 

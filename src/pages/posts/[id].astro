@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { Badge } from "../../components/ui/badge";
 import { formatDate } from "../../lib/format-date";
 import { getCollection, render } from "astro:content";
+import { SITE_URL, SITE_NAME } from "../../env";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("posts")).filter(
@@ -16,6 +17,25 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const postUrl = new URL(`/posts/${post.id}`, SITE_URL).href;
+const ogImage = new URL("/og/default.png", SITE_URL).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  datePublished: post.data.pubDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: {
+    "@type": "Person",
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+  description: post.data.description,
+  image: ogImage,
+  url: postUrl,
+};
 ---
 
 <Layout
@@ -24,6 +44,8 @@ const { Content } = await render(post);
   ogTitle={post.data.title}
   ogDescription={post.data.description}
   ogType="article"
+  ogImage={ogImage}
+  twitterCard="summary_large_image"
 >
   <article
     id="main-content"
@@ -64,4 +86,6 @@ const { Content } = await render(post);
       <a href="/" class="text-link hover:underline">Back to home</a>
     </footer>
   </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </Layout>

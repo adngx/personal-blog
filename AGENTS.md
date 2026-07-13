@@ -21,7 +21,7 @@ npm install
 # Dev server
 npm run dev
 
-# Build
+# Build (runs prebuild to generate OG image PNG)
 npm run build
 
 # Preview production build
@@ -44,6 +44,7 @@ Stored in `docs/specs/`. Format: `docs/specs/NNNN-title.md` (or `docs/specs/NNNN
 - WCAG AA accessibility: semantic HTML, keyboard navigation, ARIA labels, color contrast.
 - Conventional commits: `type(scope): description`.
 - Validate env vars at startup with Zod.
+- SEO env vars: `SITE_URL` (required in production, defaults to `http://localhost:4321`), `TWITTER_HANDLE` (optional, omits twitter:site/creator when empty). Set in Cloudflare Pages dashboard.
 - Astro islands do not share React context. Build each interactive widget as one self contained React island.
 - Use Astro content collections for blog posts (`src/content/posts/`) and pages (`src/content/pages/`).
 - Social links stored in `src/data/social-links.ts` (edit there to update).
