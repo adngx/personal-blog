@@ -7,20 +7,21 @@ A personal blog for a high school student going into computer science. Weekly le
 
 ## At a glance
 
-| #   | Feature                    | Phase      | Status      |
-| --- | -------------------------- | ---------- | ----------- |
-| 1   | Stack & architecture       | Foundation | done        |
-| 2   | Coding standards & tooling | Foundation | done        |
-| 3   | Design system              | Foundation | done        |
-| 4   | Data model                 | Foundation | done        |
-| 5   | Walking skeleton           | Release 1  | done        |
-| 6   | Post page                  | Release 1  | done        |
-| 7   | Homepage                   | Release 1  | done        |
-| 8   | About page                 | Release 1  | done        |
-| 9   | SEO enhancements           | Release 2  | in-progress |
-| 10  | Privacy policy page        | Release 2  | planned     |
-| 11  | Page view counter          | Release 2  | planned     |
-| 12  | Newsletter signup          | Release 3  | planned     |
+| #   | Feature                    | Phase      | Status  |
+| --- | -------------------------- | ---------- | ------- |
+| 1   | Stack & architecture       | Foundation | done    |
+| 2   | Coding standards & tooling | Foundation | done    |
+| 3   | Design system              | Foundation | done    |
+| 4   | Data model                 | Foundation | done    |
+| 5   | Walking skeleton           | Release 1  | done    |
+| 6   | Post page                  | Release 1  | done    |
+| 7   | Homepage                   | Release 1  | done    |
+| 8   | About page                 | Release 1  | done    |
+| 9   | SEO enhancements           | Release 2  | done    |
+| 10  | Site footer                | Release 2  | done    |
+| 11  | Privacy policy page        | Release 2  | done    |
+| 12  | Page view counter          | Release 2  | planned |
+| 13  | Newsletter signup          | Release 3  | planned |
 
 ## Foundation
 
@@ -145,15 +146,27 @@ Structured data (JSON-LD), canonical URLs, Open Graph meta tags, social cards pe
 - [x] Verify it: `/check verify SEO enhancements`
 - [x] Test it: `/test SEO enhancements`
 
-### 10. Privacy policy page
+### 10. Site footer · done · spec [0010](../specs/0010-site-footer/index.md)
+
+Site wide footer component with social links, navigation, copyright, and "Built with Astro" badge. Renders on every page via Layout.astro.
+**Done when:** the footer displays social links, nav links, copyright, and the Astro badge on every page, with responsive layout and accessible markup.
+
+- [x] Design it (spec): `/architect site footer`
+- [x] Build it: `/develop site footer`
+  - [x] Create site-footer.astro with social links, nav, copyright, and Astro badge (AC-2, AC-3, AC-4, AC-5, AC-6, AC-7, AC-8, AC-9)
+  - [x] Add SiteFooter to Layout.astro (AC-1)
+- [x] Verify it: `/check verify site footer`
+- [x] Test it: `/test site footer`
+
+### 11. Privacy policy page · done · code in `src/pages/privacy-policy.astro`
 
 A simple static page stating: no cookies, no tracking, no data collection. Good habit, minimal effort.
 **Done when:** the privacy policy page exists and is linked from the site footer or navigation.
 
-- [ ] Build it: `/develop privacy policy page`
-- [ ] Verify it: `/check verify privacy policy page`
+- [x] Build it: `/develop privacy policy page` · code in `src/pages/privacy-policy.astro`
+- [x] Verify it: `/check verify privacy policy page`
 
-### 11. Page view counter · needs a decision
+### 12. Page view counter · needs a decision
 
 A privacy friendly hit counter on each blog post. No cookies, no personal data. Reference approach: hits.seeyoufarm.com SVG badge (third party, no database needed).
 **Done when:** each post page shows a view count that updates over time, with graceful fallback on error.
@@ -165,7 +178,7 @@ A privacy friendly hit counter on each blog post. No cookies, no personal data. 
 
 ## Release 3: Newsletter
 
-### 12. Newsletter signup · needs a decision
+### 13. Newsletter signup · needs a decision
 
 Resend integration for collecting email subscribers. A form on the site that sends confirmation emails and stores subscribers.
 **Done when:** a reader can enter their email, receive a confirmation, and be added to the subscriber list.

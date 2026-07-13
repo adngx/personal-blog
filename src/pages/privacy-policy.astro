@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry, render } from "astro:content";
+import { SITE_URL, SITE_NAME } from "../env";
+
+const privacy = await getEntry("pages", "privacy-policy");
+if (!privacy) {
+  throw new Error("Privacy policy page not found in content collection");
+}
+const { Content } = await render(privacy);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: privacy.data.title,
+  description: privacy.data.description,
+  url: `${SITE_URL}/privacy-policy`,
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+};
+---
+
+<Layout title={privacy.data.title} description={privacy.data.description}>
+  <main
+    id="main-content"
+    class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
+  >
+    <h1 class="text-4xl font-bold">{privacy.data.title}</h1>
+    <div class="prose prose-gray dark:prose-invert mt-8 max-w-none">
+      <Content />
+    </div>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</Layout>

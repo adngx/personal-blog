@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import SiteHeader from "../components/site-header.astro";
+import SiteFooter from "../components/site-footer.astro";
 import { SITE_URL, TWITTER_HANDLE, SITE_NAME } from "../env";
 
 interface Props {
@@ -83,5 +84,6 @@ const pageTitle = `${title} | ${SITE_NAME}`;
     </a>
     <SiteHeader />
     <slot />
+    <SiteFooter />
   </body>
 </html>
