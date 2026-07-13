@@ -11,6 +11,11 @@ const postSchema = z.object({
   draft: z.boolean().optional().default(false),
 });
 
+const pageSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
 describe("post schema", () => {
   describe("tags field (AC-1)", () => {
     it("accepts an array of strings", () => {
@@ -190,6 +195,78 @@ describe("post schema", () => {
       });
       expect(result.draft).toBe(true);
       expect(result.tags).toEqual(["wip", "draft"]);
+    });
+  });
+});
+
+describe("page schema", () => {
+  describe("title field", () => {
+    it("accepts a valid title", () => {
+      const result = pageSchema.parse({
+        title: "About Me",
+        description:
+          "A high school student learning computer science in public.",
+      });
+      expect(result.title).toBe("About Me");
+    });
+
+    it("requires title", () => {
+      expect(() =>
+        pageSchema.parse({
+          description: "A description",
+        }),
+      ).toThrow();
+    });
+
+    it("rejects non-string title", () => {
+      expect(() =>
+        pageSchema.parse({
+          title: 123,
+          description: "A description",
+        }),
+      ).toThrow();
+    });
+  });
+
+  describe("description field", () => {
+    it("accepts a valid description", () => {
+      const result = pageSchema.parse({
+        title: "About Me",
+        description:
+          "A high school student learning computer science in public.",
+      });
+      expect(result.description).toBe(
+        "A high school student learning computer science in public.",
+      );
+    });
+
+    it("requires description", () => {
+      expect(() =>
+        pageSchema.parse({
+          title: "About Me",
+        }),
+      ).toThrow();
+    });
+
+    it("rejects non-string description", () => {
+      expect(() =>
+        pageSchema.parse({
+          title: "About Me",
+          description: 42,
+        }),
+      ).toThrow();
+    });
+  });
+
+  describe("full page with all fields", () => {
+    it("parses a complete page", () => {
+      const result = pageSchema.parse({
+        title: "About Me",
+        description:
+          "A high school student learning computer science in public. Weekly posts about code, tools, and the journey.",
+      });
+      expect(result.title).toBe("About Me");
+      expect(result.description).toContain("high school student");
     });
   });
 });

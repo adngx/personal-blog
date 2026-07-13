@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry, render } from "astro:content";
+import { socialLinks } from "../data/social-links";
+
+const about = await getEntry("pages", "about");
+if (!about) {
+  throw new Error("About page not found in content collection");
+}
+const { Content } = await render(about);
+---
+
+<Layout title={about.data.title} description={about.data.description}>
+  <main
+    id="main-content"
+    class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
+  >
+    <h1 class="text-4xl font-bold">{about.data.title}</h1>
+    <div class="prose prose-gray dark:prose-invert mt-8 max-w-none">
+      <Content />
+    </div>
+    <section class="border-border mt-12 border-t pt-8" aria-label="Connect">
+      <h2 class="text-2xl font-semibold">Connect</h2>
+      <ul class="text-muted-foreground mt-3 space-y-2">
+        {
+          socialLinks.map((link) => (
+            <li>
+              <a href={link.url}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

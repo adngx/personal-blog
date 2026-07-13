@@ -45,7 +45,9 @@ Stored in `docs/specs/`. Format: `docs/specs/NNNN-title.md` (or `docs/specs/NNNN
 - Conventional commits: `type(scope): description`.
 - Validate env vars at startup with Zod.
 - Astro islands do not share React context. Build each interactive widget as one self contained React island.
-- Use Astro content collections for blog posts (`src/content/posts/`).
+- Use Astro content collections for blog posts (`src/content/posts/`) and pages (`src/content/pages/`).
+- Social links stored in `src/data/social-links.ts` (edit there to update).
+- Design system: build all UI to `design.md` (art direction and the maximalist product bar); token values live in CSS.
 - Supabase free tier auto pauses after 7 days. Keep it alive with a weekly GitHub Action ping.
 
 ## Agent skills

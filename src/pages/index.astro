@@ -1,45 +1,146 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Badge } from "../components/ui/badge";
+import { buttonVariants } from "../components/ui/button";
+import { formatDate } from "../lib/format-date";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("posts"))
   .filter((post) => !import.meta.env.PROD || !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featuredPost = posts[0] ?? null;
+const remainingPosts = posts.slice(1);
+
+const siteUrl = Astro.site?.href ?? "https://example.com";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: "Personal Blog",
+      url: siteUrl,
+    },
+    {
+      "@type": "Blog",
+      name: "Personal Blog",
+      url: siteUrl,
+      blogPost: posts.map((post) => ({
+        "@type": "BlogPosting",
+        headline: post.data.title,
+        datePublished: post.data.pubDate.toISOString(),
+        description: post.data.description,
+        url: new URL(`/posts/${post.id}`, siteUrl).href,
+      })),
+    },
+  ],
+};
 ---
 
-<Layout title="Home">
-  <main
-    id="main-content"
-    class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
-  >
-    <h1 class="text-4xl font-bold">Personal Blog</h1>
-    <p class="text-muted-foreground mt-4 text-lg">
-      Learning computer science in public.
-    </p>
-    <section class="mt-12">
-      <h2 class="text-2xl font-semibold">Posts</h2>
-      <ul class="mt-4 space-y-4">
-        {
-          posts.map((post) => (
-            <li>
-              <a
-                href={`/posts/${post.id}`}
-                class="text-link text-lg hover:underline"
-              >
-                {post.data.title}
-              </a>
-              <p class="text-muted-foreground text-sm">
-                {post.data.pubDate.toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </p>
-              <p class="text-muted-foreground mt-1">{post.data.description}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+<Layout
+  title="Home"
+  description="A personal blog about learning computer science in public. Weekly posts for students and senior engineers."
+>
+  <main id="main-content">
+    <header
+      class="mx-auto flex max-w-[var(--container-wide)] flex-col items-center px-6 py-16 text-center"
+    >
+      <h1 class="text-4xl font-bold">Personal Blog</h1>
+      <p class="text-muted-foreground mt-4 max-w-prose text-lg">
+        Learning computer science in public.
+      </p>
+      {
+        featuredPost && (
+          <a
+            href={`/posts/${featuredPost.id}`}
+            class={
+              buttonVariants({ variant: "default", size: "lg" }) +
+              " mt-8 hover:no-underline"
+            }
+          >
+            Read latest post
+          </a>
+        )
+      }
+    </header>
+
+    {
+      featuredPost && (
+        <section
+          class="bg-muted/50 mx-auto max-w-[var(--container-wide)] px-6 py-16"
+          aria-label="Featured post"
+        >
+          <h2 class="sr-only">Featured post</h2>
+          <div class="mx-auto max-w-[var(--container-prose)]">
+            <p class="text-muted-foreground text-sm font-medium tracking-wide uppercase">
+              Latest post
+            </p>
+            <a
+              href={`/posts/${featuredPost.id}`}
+              class="text-foreground mt-3 block text-3xl font-bold hover:underline"
+            >
+              {featuredPost.data.title}
+            </a>
+            <time
+              class="text-muted-foreground mt-3 block text-sm"
+              datetime={featuredPost.data.pubDate.toISOString()}
+            >
+              {formatDate(featuredPost.data.pubDate)}
+            </time>
+            <p class="text-muted-foreground mt-4 text-lg">
+              {featuredPost.data.description}
+            </p>
+            {featuredPost.data.tags.length > 0 && (
+              <div class="mt-5 flex flex-wrap gap-2">
+                {featuredPost.data.tags.map((tag) => (
+                  <Badge variant="secondary">{tag}</Badge>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      posts.length === 0 ? (
+        <section class="mx-auto max-w-[var(--container-prose)] px-6 py-12 text-center">
+          <p class="text-muted-foreground text-lg">
+            No posts yet. Check back soon.
+          </p>
+        </section>
+      ) : remainingPosts.length > 0 ? (
+        <section
+          class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
+          aria-label="All posts"
+        >
+          <h2 class="text-2xl font-semibold">All posts</h2>
+          <ul class="mt-6 flex flex-col gap-8">
+            {remainingPosts.map((post) => (
+              <li>
+                <a
+                  href={`/posts/${post.id}`}
+                  class="text-foreground text-lg font-semibold hover:underline"
+                >
+                  {post.data.title}
+                </a>
+                <time
+                  class="text-muted-foreground mt-1 block text-sm"
+                  datetime={post.data.pubDate.toISOString()}
+                >
+                  {formatDate(post.data.pubDate)}
+                </time>
+                <p class="text-muted-foreground mt-1">
+                  {post.data.description}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null
+    }
   </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 </Layout>

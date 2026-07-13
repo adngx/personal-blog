@@ -15,8 +15,8 @@ A personal blog for a high school student going into computer science. Weekly le
 | 4   | Data model                 | Foundation | done    |
 | 5   | Walking skeleton           | Release 1  | done    |
 | 6   | Post page                  | Release 1  | done    |
-| 7   | Homepage                   | Release 1  | planned |
-| 8   | About page                 | Release 1  | planned |
+| 7   | Homepage                   | Release 1  | done    |
+| 8   | About page                 | Release 1  | done    |
 | 9   | SEO enhancements           | Release 2  | planned |
 | 10  | Privacy policy page        | Release 2  | planned |
 | 11  | Page view counter          | Release 2  | planned |
@@ -100,23 +100,30 @@ Full post template with metadata (title, date, tags), reading experience, and so
 - [x] Verify it: `/check verify post page`
 - [x] Test it: `/test post page`
 
-### 7. Homepage · needs a decision
+### 7. Homepage · done · spec [0005](../specs/0005-homepage/index.md) · code in `src/pages/index.astro`
 
 Post listing with excerpts, navigation to posts and about page. The entry point readers land on.
 **Done when:** the homepage lists all published posts with title, date, and excerpt, and links to each post and the about page.
 
-- [ ] Design it (spec): `/architect homepage`
-- [ ] Build it: `/develop homepage`
-- [ ] Verify it: `/check verify homepage`
-- [ ] Test it: `/test homepage`
+- [x] Design it (spec): `/architect homepage`
+- [x] Build it: `/develop homepage`
+  - [x] Update homepage layout with hero section (AC-1, AC-5, AC-8)
+  - [x] Add featured post section (AC-2, AC-9)
+  - [x] Update post feed to show all posts (AC-3)
+  - [x] Add empty state handling (AC-4)
+  - [x] Add JSON-LD structured data (AC-6)
+  - [x] Update meta description (AC-7)
+- [x] Verify it: `/check verify homepage`
+- [x] Test it: `/test homepage`
 
-### 8. About page
+### 8. About page · done · code in `src/pages/about.astro`
 
 Personal introduction, goals, and links. A static page with no dynamic behavior.
 **Done when:** the about page exists, is linked from navigation, and has real content.
 
-- [ ] Build it: `/develop about page`
-- [ ] Verify it: `/check verify about page`
+- [x] Build it: `/develop about page`
+- [x] Verify it: `/check verify about page`
+- [x] Test it: `/test about page`
 
 ## Release 2: SEO & Legal
 
