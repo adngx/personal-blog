@@ -61,6 +61,12 @@ const pageTitle = `${title} | ${SITE_NAME}`;
     {TWITTER_HANDLE && <meta name="twitter:creator" content={TWITTER_HANDLE} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE_NAME}
+      href="/rss.xml"
+    />
     <script is:inline>
       (function () {
         const stored = localStorage.getItem("theme");
