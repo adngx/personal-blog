@@ -20,7 +20,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const postUrl = new URL(`/posts/${post.id}`, SITE_URL).href;
-const ogImage = new URL("/og/default.png", SITE_URL).href;
+const ogImage = new URL(`/og/posts/${post.id}.png`, SITE_URL).href;
 
 const jsonLd = {
   "@context": "https://schema.org",
