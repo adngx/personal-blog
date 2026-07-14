@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { Badge } from "../../components/ui/badge";
 import { formatDate } from "../../lib/format-date";
+import { readingTime } from "../../lib/reading-time";
 import { getCollection, render } from "astro:content";
 import { SITE_URL, SITE_NAME } from "../../env";
 
@@ -53,9 +54,11 @@ const jsonLd = {
   >
     <header class="mb-8">
       <h1 class="text-4xl font-bold break-words">{post.data.title}</h1>
-      <time class="text-muted-foreground mt-2 block text-sm">
-        {formatDate(post.data.pubDate)}
-      </time>
+      <div class="text-muted-foreground mt-2 flex items-center gap-2 text-sm">
+        <time>{formatDate(post.data.pubDate)}</time>
+        <span aria-hidden="true">·</span>
+        <span>{readingTime(post.body ?? "")}</span>
+      </div>
       {
         post.data.updatedDate && (
           <p class="text-muted-foreground mt-1 text-sm">
