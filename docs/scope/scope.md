@@ -22,6 +22,12 @@ A personal blog for a high school student going into computer science. Weekly le
 | 11  | Privacy policy page        | Release 2  | done    |
 | 12  | Page view counter          | Release 2  | planned |
 | 13  | Newsletter signup          | Release 3  | planned |
+| 14  | 404 page                   | Quick wins | done    |
+| 15  | Reading time               | Quick wins | done    |
+| 16  | Security headers           | Quick wins | done    |
+| 17  | llms.txt                   | Quick wins | done    |
+| 18  | RSS feed                   | Quick wins | done    |
+| 19  | Per-post OG images         | Quick wins | done    |
 
 ## Foundation
 
@@ -188,13 +194,56 @@ Resend integration for collecting email subscribers. A form on the site that sen
 - [ ] Verify it: `/check verify newsletter signup`
 - [ ] Test it: `/test newsletter signup`
 
+## Quick Wins
+
+### 14. 404 page · done · spec [0011](../specs/0011-404-page.md) · code in `src/pages/404.astro`
+
+Custom 404 page for unmatched routes. Uses existing Layout, centered message with link home.
+
+- [x] Build it: `/develop 404 page`
+- [x] Verify it: `/check verify 404 page`
+
+### 15. Reading time · done · code in `src/lib/reading-time.ts`
+
+Estimated reading time on each post page. Pure utility that counts words and divides by 230 wpm.
+
+- [x] Build it: `/develop reading time`
+- [x] Verify it: `/check verify reading time`
+- [x] Test it: `/test reading time`
+
+### 16. Security headers · done · code in `public/_headers`
+
+HTTP security headers for Cloudflare Pages: X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, CSP.
+
+- [x] Build it: `/develop security headers`
+
+### 17. llms.txt · done · code in `src/pages/llms.txt.ts` and `src/pages/llms-full.txt.ts`
+
+LLM-friendly site overview files. llms.txt has page/post links with descriptions. llms-full.txt includes full post content.
+
+- [x] Build it: `/develop llms.txt`
+- [x] Verify it: `/check verify llms.txt`
+
+### 18. RSS feed · done · code in `src/pages/rss.xml.ts`
+
+Standard RSS feed at /rss.xml with auto-discovery link in Layout head. Uses @astrojs/rss.
+
+- [x] Build it: `/develop RSS feed`
+- [x] Verify it: `/check verify RSS feed`
+
+### 19. Per-post OG images · done · code in `scripts/generate-og.mjs`
+
+Dynamic social preview images with each post's title baked in. Generated at build time from SVG template.
+
+- [x] Build it: `/develop per-post OG images`
+- [x] Verify it: `/check verify per-post OG images`
+
 ## Deferred
 
 Out of scope for the current build pass, kept so the plan stays honest.
 
 - **Comments section**: Supabase database, Cloudflare Turnstile spam protection, moderation tools. Full weight, needs spec.
 - **Pagination**: defer until the blog has 10 or more posts. Lean weight, no spec needed.
-- **RSS feed**: Astro native support, low priority. Lean weight, no spec needed.
 
 ## Legend
 
