@@ -4,7 +4,7 @@ export interface SocialLink {
 }
 
 export const socialLinks: readonly SocialLink[] = [
-  { label: "GitHub", url: "https://github.com" },
-  { label: "X (Twitter)", url: "https://x.com" },
-  { label: "Email", url: "mailto:hello@example.com" },
+  { label: "GitHub", url: "https://github.com/adngx" },
+  { label: "X (Twitter)", url: "https://x.com/adngx0" },
+  { label: "Email", url: "mailto:ducnguyen2009@protonmail.com" },
 ] as const;

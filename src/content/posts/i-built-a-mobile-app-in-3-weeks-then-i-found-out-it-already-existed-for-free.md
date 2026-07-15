@@ -29,6 +29,8 @@ Then I discovered vibe coding — using AI to help structure and generate code. 
 
 It worked. The app was nearly done. It looked good. I was proud of it.
 
+![Ord GTD app home screen showing task stats, due today tab, and task list](../../assets/ord-screenshot.jpg)
+
 I thought: this is going to work.
 
 ## Searching for Users
