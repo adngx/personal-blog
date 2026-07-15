@@ -308,12 +308,12 @@ describe("JSON-LD structured data construction (AC-6)", () => {
   it("builds WebSite schema with correct fields", () => {
     const jsonLd = {
       "@context": "https://schema.org",
-      "@graph": [{ "@type": "WebSite", name: "Personal Blog", url: siteUrl }],
+      "@graph": [{ "@type": "WebSite", name: "adngx", url: siteUrl }],
     };
 
     const webSite = jsonLd["@graph"][0];
     expect(webSite["@type"]).toBe("WebSite");
-    expect(webSite).toHaveProperty("name", "Personal Blog");
+    expect(webSite).toHaveProperty("name", "adngx");
     expect(webSite).toHaveProperty("url", siteUrl);
   });
 
@@ -352,10 +352,10 @@ describe("JSON-LD structured data construction (AC-6)", () => {
     const jsonLd = {
       "@context": "https://schema.org",
       "@graph": [
-        { "@type": "WebSite", name: "Personal Blog", url: siteUrl },
+        { "@type": "WebSite", name: "adngx", url: siteUrl },
         {
           "@type": "Blog",
-          name: "Personal Blog",
+          name: "adngx",
           url: siteUrl,
           blogPost: blogPosts,
         },
@@ -407,8 +407,8 @@ describe("JSON-LD structured data construction (AC-6)", () => {
     const jsonLd = {
       "@context": "https://schema.org",
       "@graph": [
-        { "@type": "WebSite", name: "Personal Blog", url: siteUrl },
-        { "@type": "Blog", name: "Personal Blog", url: siteUrl, blogPost: [] },
+        { "@type": "WebSite", name: "adngx", url: siteUrl },
+        { "@type": "Blog", name: "adngx", url: siteUrl, blogPost: [] },
       ],
     };
 

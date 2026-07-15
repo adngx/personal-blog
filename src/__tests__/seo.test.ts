@@ -15,20 +15,20 @@ import { join } from "node:path";
  * by /check verify against the running dev server.
  */
 
-const SITE_URL = "https://personal-blog.pages.dev";
-const SITE_NAME = "Personal Blog";
+const SITE_URL = "https://adngx.pages.dev";
+const SITE_NAME = "adngx";
 
 describe("title format (AC-4)", () => {
   it("formats title as 'Title | Site Name'", () => {
     const title = "Getting Started with TypeScript";
     const pageTitle = `${title} | ${SITE_NAME}`;
-    expect(pageTitle).toBe("Getting Started with TypeScript | Personal Blog");
+    expect(pageTitle).toBe("Getting Started with TypeScript | adngx");
   });
 
   it("formats home title correctly", () => {
     const title = "Home";
     const pageTitle = `${title} | ${SITE_NAME}`;
-    expect(pageTitle).toBe("Home | Personal Blog");
+    expect(pageTitle).toBe("Home | adngx");
   });
 });
 
@@ -36,28 +36,26 @@ describe("canonical URL construction (AC-1)", () => {
   it("builds canonical URL from site URL and pathname", () => {
     const pathname = "/posts/hello-world";
     const canonicalUrl = new URL(pathname, SITE_URL).href;
-    expect(canonicalUrl).toBe(
-      "https://personal-blog.pages.dev/posts/hello-world",
-    );
+    expect(canonicalUrl).toBe("https://adngx.pages.dev/posts/hello-world");
   });
 
   it("builds canonical URL for root path", () => {
     const pathname = "/";
     const canonicalUrl = new URL(pathname, SITE_URL).href;
-    expect(canonicalUrl).toBe("https://personal-blog.pages.dev/");
+    expect(canonicalUrl).toBe("https://adngx.pages.dev/");
   });
 
   it("builds canonical URL for about page", () => {
     const pathname = "/about";
     const canonicalUrl = new URL(pathname, SITE_URL).href;
-    expect(canonicalUrl).toBe("https://personal-blog.pages.dev/about");
+    expect(canonicalUrl).toBe("https://adngx.pages.dev/about");
   });
 });
 
 describe("OG image URL construction (AC-2, AC-12)", () => {
   it("builds default OG image URL", () => {
     const imageUrl = new URL("/og/default.png", SITE_URL).href;
-    expect(imageUrl).toBe("https://personal-blog.pages.dev/og/default.png");
+    expect(imageUrl).toBe("https://adngx.pages.dev/og/default.png");
   });
 
   it("uses provided OG image when given", () => {
@@ -69,7 +67,7 @@ describe("OG image URL construction (AC-2, AC-12)", () => {
   it("falls back to default when no OG image provided", () => {
     const ogImage: string | undefined = undefined;
     const imageUrl = ogImage ?? new URL("/og/default.png", SITE_URL).href;
-    expect(imageUrl).toBe("https://personal-blog.pages.dev/og/default.png");
+    expect(imageUrl).toBe("https://adngx.pages.dev/og/default.png");
   });
 });
 
@@ -113,7 +111,7 @@ describe("BlogPosting JSON-LD construction (AC-6)", () => {
     expect(jsonLd).toHaveProperty("image");
     expect(jsonLd).toHaveProperty(
       "url",
-      "https://personal-blog.pages.dev/posts/hello-world",
+      "https://adngx.pages.dev/posts/hello-world",
     );
   });
 
@@ -178,7 +176,7 @@ describe("Person JSON-LD construction (AC-7)", () => {
     };
 
     expect(jsonLd["@type"]).toBe("Person");
-    expect(jsonLd).toHaveProperty("name", "Personal Blog");
+    expect(jsonLd).toHaveProperty("name", "adngx");
     expect(jsonLd).toHaveProperty("url", SITE_URL);
     expect(jsonLd.sameAs).toEqual(["https://github.com", "https://x.com"]);
   });
@@ -236,7 +234,7 @@ describe("robots.txt content (AC-9)", () => {
     expect(content).toContain("User-agent: *");
     expect(content).toContain("Allow: /");
     expect(content).toContain(
-      "Sitemap: https://personal-blog.pages.dev/sitemap-index.xml",
+      "Sitemap: https://adngx.pages.dev/sitemap-index.xml",
     );
   });
 });
@@ -249,12 +247,12 @@ describe("env validation (AC-10, AC-11)", () => {
 
   it("accepts valid SITE_URL and TWITTER_HANDLE", () => {
     const result = envSchema.safeParse({
-      SITE_URL: "https://personal-blog.pages.dev",
+      SITE_URL: "https://adngx.pages.dev",
       TWITTER_HANDLE: "@myhandle",
     });
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.SITE_URL).toBe("https://personal-blog.pages.dev");
+      expect(result.data.SITE_URL).toBe("https://adngx.pages.dev");
       expect(result.data.TWITTER_HANDLE).toBe("@myhandle");
     }
   });
@@ -331,7 +329,7 @@ describe("OG image fallback (AC-12)", () => {
   it("default.svg contains the site name", () => {
     const svgPath = join(ogDir, "default.svg");
     const content = readFileSync(svgPath, "utf-8");
-    expect(content).toContain("Personal Blog");
+    expect(content).toContain("adngx");
   });
 
   it("default.svg has correct dimensions (1200x630)", () => {

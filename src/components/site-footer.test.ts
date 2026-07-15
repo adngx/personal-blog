@@ -43,8 +43,8 @@ describe("site footer logic", () => {
       expect(SITE_NAME.length).toBeGreaterThan(0);
     });
 
-    it("is 'Personal Blog'", () => {
-      expect(SITE_NAME).toBe("Personal Blog");
+    it("is 'adngx'", () => {
+      expect(SITE_NAME).toBe("adngx");
     });
   });
 

@@ -23,4 +23,4 @@ if (!parsed.success) {
 
 export const SITE_URL = parsed.data.SITE_URL;
 export const TWITTER_HANDLE = parsed.data.TWITTER_HANDLE;
-export const SITE_NAME = "Personal Blog";
+export const SITE_NAME = "adngx";
