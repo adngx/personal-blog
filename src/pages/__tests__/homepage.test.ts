@@ -365,9 +365,9 @@ describe("JSON-LD structured data construction (AC-6)", () => {
     const blog = jsonLd["@graph"][1];
     expect(blog["@type"]).toBe("Blog");
     expect(blog.blogPost).toHaveLength(2);
-    expect(blog.blogPost[0].headline).toBe("Post 1");
-    expect(blog.blogPost[0].url).toBe("https://example.com/posts/post-1");
-    expect(blog.blogPost[1].headline).toBe("Post 2");
+    expect(blog.blogPost![0].headline).toBe("Post 1");
+    expect(blog.blogPost![0].url).toBe("https://example.com/posts/post-1");
+    expect(blog.blogPost![1].headline).toBe("Post 2");
   });
 
   it("includes all published posts in JSON-LD, including featured", () => {
