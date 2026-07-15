@@ -3,6 +3,10 @@ title: "About Me"
 description: "A high school student learning software development in public. Weekly posts about code, tools, and the journey."
 ---
 
+## About Me
+
+Anh-Duc Nguyen, 16, high school student in Vietnam.
+
 ## Why this blog
 
 I started this blog to document what I'm learning as I dive into software development. Writing helps me think clearly, and sharing publicly keeps me honest. If even one person finds a post useful, that's a win.
