@@ -1,15 +1,15 @@
 ---
 title: "About Me"
-description: "A high school student learning computer science in public. Weekly posts about code, tools, and the journey."
+description: "A high school student learning software development in public. Weekly posts about code, tools, and the journey."
 ---
 
 ## Why this blog
 
-I started this blog to document what I'm learning as I dive into computer science. Writing helps me think clearly, and sharing publicly keeps me honest. If even one person finds a post useful, that's a win.
+I started this blog to document what I'm learning as I dive into software development. Writing helps me think clearly, and sharing publicly keeps me honest. If even one person finds a post useful, that's a win.
 
 ## What I'm learning
 
-Right now I'm focused on the fundamentals — TypeScript, web development, and how modern tools like Astro and Tailwind fit together. I'm also interested in algorithms, systems thinking, and building things that actually work.
+Right now I'm focused on the fundamentals — Git, database. I'm also interested in software design, systems thinking, and building things that actually work.
 
 ## Goals
 

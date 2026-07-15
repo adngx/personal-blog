@@ -10,7 +10,7 @@ export const GET: APIRoute = async () => {
   const sections: string[] = [
     `# ${SITE_NAME}`,
     "",
-    "> A personal blog about computer science. Learning in public as a high school student.",
+    "> A personal blog about software development. Learning in public as a high school student.",
     "",
     "---",
     "",

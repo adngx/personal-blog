@@ -205,7 +205,7 @@ describe("page schema", () => {
       const result = pageSchema.parse({
         title: "About Me",
         description:
-          "A high school student learning computer science in public.",
+          "A high school student learning software development in public.",
       });
       expect(result.title).toBe("About Me");
     });
@@ -233,10 +233,10 @@ describe("page schema", () => {
       const result = pageSchema.parse({
         title: "About Me",
         description:
-          "A high school student learning computer science in public.",
+          "A high school student learning software development in public.",
       });
       expect(result.description).toBe(
-        "A high school student learning computer science in public.",
+        "A high school student learning software development in public.",
       );
     });
 
@@ -263,7 +263,7 @@ describe("page schema", () => {
       const result = pageSchema.parse({
         title: "About Me",
         description:
-          "A high school student learning computer science in public. Weekly posts about code, tools, and the journey.",
+          "A high school student learning software development in public. Weekly posts about code, tools, and the journey.",
       });
       expect(result.title).toBe("About Me");
       expect(result.description).toContain("high school student");
