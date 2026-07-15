@@ -41,6 +41,8 @@ I expected to find a crowd. Instead, I found crickets. Two people, maybe, in com
 
 Worse, the GTD subreddit had one piece of advice that kept coming up: "Don't trust apps. Find your own setup." The mods explicitly said it. The community echoed it.
 
+![GTD subreddit post showing the community advice to not trust apps and find your own setup](../../assets/gtd-subreddit-screenshot.png)
+
 The people I wanted to help were being told not to look for what I was building.
 
 That was the first crack in my confidence. But the real blow was still coming.
