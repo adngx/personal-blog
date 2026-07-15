@@ -6,3 +6,6 @@ dist/
 # Auto-generated OG images (created by scripts/generate-og.mjs)
 public/og/posts/
 public/og/default.png
+
+# Drafts
+docs/drafts/
