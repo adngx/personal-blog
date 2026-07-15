@@ -26,6 +26,9 @@ jobs:
       - name: Format check
         run: npm run format:check
 
+      - name: Generate Astro types
+        run: npx astro sync
+
       - name: Typecheck
         run: npm run typecheck
 
