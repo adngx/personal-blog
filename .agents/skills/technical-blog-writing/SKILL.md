@@ -89,6 +89,17 @@ Open with something concrete that shows why the topic matters, then briefly fore
 - [ ] The intro and conclusion agree with each other when read back to back
 - [ ] Any sentence you can't justify keeping gets cut
 
+## Step 8b: Voice check — does this read as human?
+
+AI-generated text is increasingly detectable (and increasingly distrusted by readers) based on patterns in sentence structure, punctuation, and tone. After the structural self-edit above, run a second pass focused on voice. See `references/ai-voice-guide.md` for the full guide; the key checks:
+
+- **Vary sentence length.** Alternate long and short. If every sentence in a paragraph is roughly the same length, rewrite two — one shorter, one longer.
+- **Em dash density.** Count them. More than 5–6 in a post means you're in AI-tell territory. Replace with commas, colons, parentheses, or period + new sentence.
+- **Strip ta-da phrases.** "But here's the thing," "crucially," "but here's what nobody's saying" — replace with plain "But" or just state the point.
+- **Cut formal hedging.** "It's worth noting that..." → just say it.
+- **Inject personality.** Opinions, real experience, moments where you got stuck or were wrong. AI writing is uniformly positive and agreeable — humans aren't.
+- **Read it aloud.** If it sounds like a press release, rewrite. If it sounds like you explaining something to a friend, you're close.
+
 ## Step 9: Packaging checklist before publishing
 
 - **Meta description / link-preview text** — one or two sentences that work standalone if all someone ever sees is the link card.
@@ -119,5 +130,6 @@ Match the user's actual voice from any past writing they share, rather than defa
 | Headline | Does it promise exactly what the piece delivers — no more, no less? |
 | Body | Could someone skim just the subheadings and know what's in each section? |
 | Code | Has it actually been run, not just remembered? |
+| Voice | Read it aloud — does it sound like you talking, or like a model? |
 | Packaging | Does the link-preview text work standalone with zero other context? |
 | Distribution | Does the plan name specific people/communities, not "post it and see"? |
