@@ -1,7 +1,7 @@
 # 0012. Comments Section
 
 **Date**: 2026-07-16
-**Status**: Proposed
+**Status**: Accepted
 
 ## Summary
 

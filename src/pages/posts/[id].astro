@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Badge } from "../../components/ui/badge";
+import { GiscusComments } from "../../components/comments/giscus-comments";
 import { formatDate } from "../../lib/format-date";
 import { readingTime } from "../../lib/reading-time";
 import { getCollection, render } from "astro:content";
@@ -88,6 +89,7 @@ const jsonLd = {
     <footer class="border-border mt-12 border-t pt-4">
       <a href="/" class="text-link hover:underline">Back to home</a>
     </footer>
+    <GiscusComments client:visible />
   </article>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

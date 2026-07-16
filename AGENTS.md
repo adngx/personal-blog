@@ -4,7 +4,7 @@
 
 - **Language / Runtime**: TypeScript (strict), Node
 - **Framework**: Astro (latest)
-- **Key dependencies**: Supabase (comments DB), shadcn/ui (UI components), Resend (newsletter)
+- **Key dependencies**: Giscus (comments section), shadcn/ui (UI components), Resend (newsletter)
 - **Package manager**: npm
 - **Hosting**: Cloudflare Pages (domain is also bought on cloudflare registrar FYI)
 
@@ -50,6 +50,7 @@ Stored in `docs/specs/`. Format: `docs/specs/NNNN-title.md` (or `docs/specs/NNNN
 - Social links stored in `src/data/social-links.ts` (edit there to update).
 - Design system: build all UI to `design.md` (art direction and the maximalist product bar); token values live in CSS.
 - Supabase free tier auto pauses after 7 days. Keep it alive with a weekly GitHub Action ping.
+- CSP (`public/_headers`): every external domain referenced by components must be allowlisted in the matching CSP directive. When adding a new external dependency, update both `public/_headers` and the required exceptions list in `src/__tests__/headers.test.ts`.
 
 ## Agent skills
 
