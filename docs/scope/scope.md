@@ -27,6 +27,7 @@ A personal blog for a high school student going into software development. Weekl
 | 16  | llms.txt                   | Quick wins | done    |
 | 17  | RSS feed                   | Quick wins | done    |
 | 18  | Per-post OG images         | Quick wins | done    |
+| 19  | Comments section           | Release 3  | planned |
 
 ## Foundation
 
@@ -183,6 +184,16 @@ Resend integration for collecting email subscribers. A form on the site that sen
 - [ ] Verify it: `/check verify newsletter signup`
 - [ ] Test it: `/test newsletter signup`
 
+### 19. Comments section
+
+Giscus integration for reader comments on blog posts. Uses GitHub Discussions as the backend. Readers authenticate with their GitHub account to comment.
+**Done when:** comments render on every post page, load lazily, and follow the site's theme.
+
+- [ ] Design it (spec): `/architect comments section`
+- [ ] Build it: `/develop comments section`
+- [ ] Verify it: `/check verify comments section`
+- [ ] Test it: `/test comments section`
+
 ## Quick Wins
 
 ### 13. 404 page · done · spec [0011](../specs/0011-404-page.md) · code in `src/pages/404.astro`
@@ -231,7 +242,6 @@ Dynamic social preview images with each post's title baked in. Generated at buil
 
 Out of scope for the current build pass, kept so the plan stays honest.
 
-- **Comments section**: Supabase database, Cloudflare Turnstile spam protection, moderation tools. Full weight, needs spec.
 - **Pagination**: defer until the blog has 10 or more posts. Lean weight, no spec needed.
 
 ## Legend
