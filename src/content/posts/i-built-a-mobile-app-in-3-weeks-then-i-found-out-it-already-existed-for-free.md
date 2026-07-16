@@ -1,6 +1,6 @@
 ---
 title: "I Built a Mobile App in 3 Weeks. Then I Found Out It Already Existed — for Free."
-description: "I learned JavaScript, built a GTD app in 3 weeks, and thought I was ready to start a business. Then I found out my app already existed — for free."
+description: "I learned JavaScript, built a GTD app in 3 weeks, and thought I was ready to start a business. Then I found out my app already existed, for free."
 pubDate: 2026-07-15
 tags: ["beginners", "learning", "projects", "business"]
 ---
@@ -9,13 +9,13 @@ I'd been coding for maybe two months. I'd learned JavaScript, pivoted to AI agen
 
 Three weeks later, I downloaded someone else's app and realized mine was already dead.
 
-This is the story of how I went from that confidence to knowing I was wrong — and why the failure was still worth it.
+This is the story of how I went from that confidence to knowing I was wrong. And why the failure was still worth it.
 
 ## The Setup
 
 I'd just finished some important high school exams and had time to breathe for the first time in months. I started learning to code. JavaScript first, then AI agents in Python. I was picking things up fast, and that speed made me feel invincible.
 
-Around the same time, I'd been trying to improve my productivity. I'd read about GTD — Getting Things Done — but never stuck with it. Tools like Notion and Todoist felt too complex, too long to set up. My attention span couldn't handle it.
+Around the same time, I'd been trying to improve my productivity. I'd read about GTD (Getting Things Done) but never stuck with it. Tools like Notion and Todoist felt too complex, too long to set up. My attention span couldn't handle it.
 
 So I had an idea: build a mobile GTD app for myself. Simple, clean, designed for people like me who wanted a simplified GTD workflow without the overhead. And maybe — ambitiously, I know — turn it into a business.
 
@@ -25,7 +25,7 @@ At the time, my confidence was sky high. I was learning so fast. How hard could 
 
 I skimmed a React Native tutorial and jumped straight in. The first version, I wrote by hand. It was slow and messy.
 
-Then I discovered vibe coding — using AI to help structure and generate code. I restarted the project ([Ord](https://github.com/aduc2612/Ord)), this time researching the tech stack a bit more. React Native for the frontend, Supabase for the backend. I defined the architecture, planned the features, and coded with actual structure instead of just throwing things at the wall.
+Then I discovered vibe coding, using AI to help structure and generate code. I restarted the project ([Ord](https://github.com/aduc2612/Ord)), this time researching the tech stack a bit more. React Native for the frontend, Supabase for the backend. I defined the architecture, planned the features, and coded with actual structure instead of just throwing things at the wall.
 
 It worked. The app was nearly done. It looked good. I was proud of it.
 
@@ -51,7 +51,7 @@ That was the first crack in my confidence. But the real blow was still coming.
 
 I kept searching. And then I found [Mindwtr](https://github.com/dongdongbh/mindwtr).
 
-Open source. Free. Built specifically for the GTD workflow. Syncs across desktop and mobile. Every feature I'd spent three weeks building — and more I hadn't even thought of.
+Open source. Free. Built specifically for the GTD workflow. Syncs across desktop and mobile. Every feature I'd spent three weeks building, and more I hadn't even thought of.
 
 I stared at the screen. I'd been building a mobile-only app in a space where a better, free, cross-platform version already existed. Something I could have found in five minutes of research before writing a single line of code.
 
@@ -77,7 +77,7 @@ I'd learned just enough to be dangerous. Not enough to be useful.
 
 I'm slowing down.
 
-I'm learning git properly — rebase, merge conflicts, real workflows. I'm learning databases — indexing, performance, design patterns. I'm learning the fundamentals I skipped because I was too busy chasing the next idea.
+I'm learning git properly: rebase, merge conflicts, real workflows. I'm learning databases: indexing, performance, design patterns. I'm learning the fundamentals I skipped because I was too busy chasing the next idea.
 
 It's less exciting than building a business. It's more valuable.
 
@@ -95,6 +95,6 @@ But spend a day searching for existing solutions before you write a line of code
 
 And learn the fundamentals alongside your projects. Git, databases, software design. Not after you fail. Alongside. They're the difference between a prototype and something production-ready.
 
-Most importantly: don't confuse early momentum with mastery. Learning fast doesn't mean you've learned enough. It means you're at the top of the confidence curve — and the drop is coming.
+Most importantly: don't confuse early momentum with mastery. Learning fast doesn't mean you've learned enough. It means you're at the top of the confidence curve. And the drop is coming.
 
 Have you ever been on top of that confidence curve? What snapped you out of it?
