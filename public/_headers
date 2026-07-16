@@ -1,3 +1,6 @@
+/
+  Link: </llms.txt>; rel="alternate"; type="text/plain"; title="LLM-friendly site index", </llms-full.txt>; rel="alternate"; type="text/plain"; title="Full LLM content", </rss.xml>; rel="alternate"; type="application/rss+xml"; title="RSS Feed", </sitemap-index.xml>; rel="sitemap"; type="application/xml"
+
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
