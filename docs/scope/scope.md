@@ -7,27 +7,27 @@ A personal blog for a high school student going into software development. Weekl
 
 ## At a glance
 
-| #   | Feature                    | Phase      | Status  |
-| --- | -------------------------- | ---------- | ------- |
-| 1   | Stack & architecture       | Foundation | done    |
-| 2   | Coding standards & tooling | Foundation | done    |
-| 3   | Design system              | Foundation | done    |
-| 4   | Data model                 | Foundation | done    |
-| 5   | Walking skeleton           | Release 1  | done    |
-| 6   | Post page                  | Release 1  | done    |
-| 7   | Homepage                   | Release 1  | done    |
-| 8   | About page                 | Release 1  | done    |
-| 9   | SEO enhancements           | Release 2  | done    |
-| 10  | Site footer                | Release 2  | done    |
-| 11  | Privacy policy page        | Release 2  | done    |
-| 12  | Newsletter signup          | Release 3  | planned |
-| 13  | 404 page                   | Quick wins | done    |
-| 14  | Reading time               | Quick wins | done    |
-| 15  | Security headers           | Quick wins | done    |
-| 16  | llms.txt                   | Quick wins | done    |
-| 17  | RSS feed                   | Quick wins | done    |
-| 18  | Per-post OG images         | Quick wins | done    |
-| 19  | Comments section           | Release 3  | planned |
+| #   | Feature                    | Phase      | Status      |
+| --- | -------------------------- | ---------- | ----------- |
+| 1   | Stack & architecture       | Foundation | done        |
+| 2   | Coding standards & tooling | Foundation | done        |
+| 3   | Design system              | Foundation | done        |
+| 4   | Data model                 | Foundation | done        |
+| 5   | Walking skeleton           | Release 1  | done        |
+| 6   | Post page                  | Release 1  | done        |
+| 7   | Homepage                   | Release 1  | done        |
+| 8   | About page                 | Release 1  | done        |
+| 9   | SEO enhancements           | Release 2  | done        |
+| 10  | Site footer                | Release 2  | done        |
+| 11  | Privacy policy page        | Release 2  | done        |
+| 12  | Newsletter signup          | Release 3  | planned     |
+| 13  | 404 page                   | Quick wins | done        |
+| 14  | Reading time               | Quick wins | done        |
+| 15  | Security headers           | Quick wins | done        |
+| 16  | llms.txt                   | Quick wins | done        |
+| 17  | RSS feed                   | Quick wins | done        |
+| 18  | Per-post OG images         | Quick wins | done        |
+| 19  | Comments section           | Release 3  | in-progress |
 
 ## Foundation
 
@@ -184,15 +184,18 @@ Resend integration for collecting email subscribers. A form on the site that sen
 - [ ] Verify it: `/check verify newsletter signup`
 - [ ] Test it: `/test newsletter signup`
 
-### 19. Comments section
+### 19. Comments section · in-progress
 
 Giscus integration for reader comments on blog posts. Uses GitHub Discussions as the backend. Readers authenticate with their GitHub account to comment.
 **Done when:** comments render on every post page, load lazily, and follow the site's theme.
 
-- [ ] Design it (spec): `/architect comments section`
+- [x] Design it (spec): `/architect comments section`
 - [ ] Build it: `/develop comments section`
+  - [ ] Install @giscus/react and create component (AC-1, AC-3, AC-4, AC-5, AC-6, AC-7)
+  - [ ] Integrate into post page (AC-1, AC-2)
 - [ ] Verify it: `/check verify comments section`
 - [ ] Test it: `/test comments section`
+      Spec [0012](../specs/0012-comments-section.md)
 
 ## Quick Wins
 
