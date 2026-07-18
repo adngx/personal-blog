@@ -41,10 +41,31 @@ describe("GiscusComments", () => {
     expect(section).toHaveAttribute("aria-labelledby", heading.id);
   });
 
-  // AC-3: Comments follow the user's operating system color scheme
-  it("uses preferred_color_scheme theme", () => {
+  // AC-3: Comments follow the site's theme toggle
+  it("uses light theme when no dark class is present", () => {
+    document.documentElement.classList.remove("dark");
     render(<GiscusComments />);
-    expect(getGiscusProps().theme).toBe("preferred_color_scheme");
+    expect(getGiscusProps().theme).toBe("light");
+  });
+
+  it("uses dark theme when dark class is present", () => {
+    document.documentElement.classList.add("dark");
+    render(<GiscusComments />);
+    expect(getGiscusProps().theme).toBe("dark");
+    document.documentElement.classList.remove("dark");
+  });
+
+  it("updates theme when dark class changes", async () => {
+    document.documentElement.classList.remove("dark");
+    render(<GiscusComments />);
+    expect(getGiscusProps().theme).toBe("light");
+
+    document.documentElement.classList.add("dark");
+    // MutationObserver fires asynchronously; wait for React to re-render
+    await screen.findByTestId("giscus-widget");
+    expect(getGiscusProps().theme).toBe("dark");
+
+    document.documentElement.classList.remove("dark");
   });
 
   // AC-4: Emoji reactions are enabled on the main post
