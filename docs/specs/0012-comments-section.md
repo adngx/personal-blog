@@ -5,7 +5,7 @@
 
 ## Summary
 
-Add a comments section to every blog post using Giscus, a lightweight system backed by GitHub Discussions. Readers authenticate with their GitHub account to comment. The component loads lazily when scrolled into view and follows the user's operating system color scheme. No database or backend code is needed; GitHub Discussions stores all data.
+Add a comments section to every blog post using Giscus, a lightweight system backed by GitHub Discussions. Readers authenticate with their GitHub account to comment. The component loads lazily when scrolled into view and follows the site's theme toggle (light or dark). No database or backend code is needed; GitHub Discussions stores all data.
 
 ## Context
 
@@ -13,7 +13,7 @@ The blog currently has no way for readers to leave feedback or ask questions. A 
 
 Giscus is a third party service that embeds a comment widget backed by GitHub Discussions. It requires a public GitHub repository with Discussions enabled and the Giscus app installed. Readers sign in with their GitHub account to comment, which naturally filters for the technical audience this blog targets. The widget renders as an iframe, so it cannot conflict with the site's styles or scripts.
 
-The site uses Astro with React islands. The theme toggle component switches between light and dark mode by toggling a class on the document element. Giscus supports dynamic theme switching through post messages, but the simpler approach is to follow the operating system preference automatically. This avoids coupling the comment widget to the site's theme state.
+The site uses Astro with React islands. The theme toggle component switches between light and dark mode by toggling a `.dark` class on `document.documentElement`. Giscus supports dynamic theme switching through `postMessage`, and the `@giscus/react` component handles this automatically when the `theme` prop changes. The comments component observes the `.dark` class via a `MutationObserver` and passes the resolved theme to Giscus, so the comments widget stays in sync with the site toggle without coupling the two components directly.
 
 ## Requirements
 
@@ -27,7 +27,7 @@ The site uses Astro with React islands. The theme toggle component switches betw
 
 - **AC-1**: Comments section renders on every blog post page below the article footer.
 - **AC-2**: Comments load lazily using client visible hydration. No JavaScript ships until the user scrolls to the comments area.
-- **AC-3**: Comments follow the user's operating system color scheme preference (light or dark) automatically.
+- **AC-3**: Comments follow the site's theme toggle (light or dark). When the user switches theme, the comments widget updates without a page reload.
 - **AC-4**: Emoji reactions are enabled on the main post.
 - **AC-5**: Comments section has a visible heading for accessibility and navigation.
 - **AC-6**: The Giscus component uses the pathname mapping strategy so each post URL maps to one discussion.
@@ -99,7 +99,7 @@ The blog targets a technical audience, most of whom have GitHub accounts. Giscus
 
 The pathname mapping strategy is the standard choice for blogs. Each post URL maps to exactly one discussion, and Giscus creates the discussion automatically when someone first comments. The Announcements category ensures only maintainers and the Giscus bot can create discussions, which prevents spam.
 
-Using preferred color scheme for the theme is simpler than syncing with the site's theme toggle. It avoids coupling the comment widget to the site's internal state and works correctly for most users. The client visible loading strategy defers the iframe until the user scrolls to it, which keeps the initial page load fast.
+Syncing the Giscus theme with the site toggle uses a `MutationObserver` on the `.dark` class of `document.documentElement`. This is decoupled from the `ThemeToggle` component: no shared context or utility is needed, because the class on `<html>` is the single source of truth for the current theme. The `@giscus/react` component sends a `postMessage` to the iframe when the `theme` prop changes, so the update happens without reloading the comments. The client visible loading strategy defers the iframe until the user scrolls to it, which keeps the initial page load fast.
 
 ## Feature design
 
@@ -131,7 +131,7 @@ These are public identifiers, not secrets. They are hardcoded in the component.
 
 - Happy path: comments section renders below the article footer with a heading and the Giscus widget, verifies AC-1, AC-5
 - Lazy loading: comments section does not load JavaScript until scrolled into view, verifies AC-2
-- Theme: comments widget follows the operating system color scheme, verifies AC-3
+- Theme: comments widget follows the site's theme toggle and updates when the `.dark` class changes, verifies AC-3
 - Reactions: emoji reactions are enabled on the main post, verifies AC-4
 - Mapping: each post URL maps to one discussion using pathname strategy, verifies AC-6
 - Category: discussions are created in the Announcements category, verifies AC-7
@@ -139,7 +139,7 @@ These are public identifiers, not secrets. They are hardcoded in the component.
 ## Build plan
 
 1. **Install @giscus/react dependency**, satisfies AC-1
-2. **Create src/components/comments/giscus comments.tsx** React island component with Giscus configuration, satisfies AC-1, AC-3, AC-4, AC-5, AC-6, AC-7
+2. **Create src/components/comments/giscus comments.tsx** React island component with Giscus configuration. Uses a `MutationObserver` on `document.documentElement` class changes to track the site theme and pass it to the Giscus `theme` prop, satisfies AC-1, AC-3, AC-4, AC-5, AC-6, AC-7
 3. **Add comments component to src/pages/posts/[id].astro** after the article footer, satisfies AC-1, AC-2
 4. **Write tests** to verify all acceptance criteria
 
