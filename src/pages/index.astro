@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Badge } from "../components/ui/badge";
 import { buttonVariants } from "../components/ui/button";
 import { formatDate } from "../lib/format-date";
 import { getCollection } from "astro:content";
@@ -9,9 +8,6 @@ import { SITE_URL, SITE_NAME } from "../env";
 const posts = (await getCollection("posts"))
   .filter((post) => !import.meta.env.PROD || !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const featuredPost = posts[0] ?? null;
-const remainingPosts = posts.slice(1);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -43,19 +39,24 @@ const jsonLd = {
 >
   <main id="main-content">
     <header
-      class="mx-auto flex max-w-[var(--container-wide)] flex-col items-center px-6 py-16 text-center"
+      class="border-border bg-card mx-auto max-w-[var(--container-prose)] rounded-lg border p-6"
     >
-      <h1 class="text-4xl font-bold">adngx's blog</h1>
-      <p class="text-muted-foreground mt-4 max-w-prose text-lg">
-        Learning software development in public.
+      <h1 class="text-4xl font-bold tracking-tight">Anh-Duc Nguyen, 16</h1>
+      <p class="text-muted-foreground mt-2 italic">
+        High school student, Writer, Developer
+      </p>
+      <p class="mt-4 max-w-prose">
+        I learn software development in public. Writing helps me think clearly,
+        and sharing publicly keeps me honest. If even one person finds a post
+        useful, that's a win:)
       </p>
       {
-        featuredPost && (
+        posts.length > 0 && (
           <a
-            href={`/posts/${featuredPost.id}`}
+            href={`/posts/${posts[0].id}`}
             class={
               buttonVariants({ variant: "default", size: "lg" }) +
-              " mt-8 hover:no-underline"
+              " mt-6 hover:no-underline"
             }
           >
             Read latest post
@@ -65,58 +66,20 @@ const jsonLd = {
     </header>
 
     {
-      featuredPost && (
-        <section
-          class="bg-muted/50 mx-auto max-w-[var(--container-wide)] px-6 py-16"
-          aria-label="Featured post"
-        >
-          <h2 class="sr-only">Featured post</h2>
-          <div class="mx-auto max-w-[var(--container-prose)]">
-            <p class="text-muted-foreground text-sm font-medium tracking-wide uppercase">
-              Latest post
-            </p>
-            <a
-              href={`/posts/${featuredPost.id}`}
-              class="text-foreground mt-3 block text-3xl font-bold hover:underline"
-            >
-              {featuredPost.data.title}
-            </a>
-            <time
-              class="text-muted-foreground mt-3 block text-sm"
-              datetime={featuredPost.data.pubDate.toISOString()}
-            >
-              {formatDate(featuredPost.data.pubDate)}
-            </time>
-            <p class="text-muted-foreground mt-4 text-lg">
-              {featuredPost.data.description}
-            </p>
-            {featuredPost.data.tags.length > 0 && (
-              <div class="mt-5 flex flex-wrap gap-2">
-                {featuredPost.data.tags.map((tag) => (
-                  <Badge variant="secondary">{tag}</Badge>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-      )
-    }
-
-    {
       posts.length === 0 ? (
         <section class="mx-auto max-w-[var(--container-prose)] px-6 py-12 text-center">
           <p class="text-muted-foreground text-lg">
             No posts yet. Check back soon.
           </p>
         </section>
-      ) : remainingPosts.length > 0 ? (
+      ) : (
         <section
           class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
-          aria-label="All posts"
+          aria-label="Latest content"
         >
-          <h2 class="text-2xl font-semibold">All posts</h2>
+          <h2 class="text-2xl font-semibold">Latest content</h2>
           <ul class="mt-6 flex flex-col gap-8">
-            {remainingPosts.map((post) => (
+            {posts.map((post) => (
               <li>
                 <a
                   href={`/posts/${post.id}`}
@@ -137,7 +100,7 @@ const jsonLd = {
             ))}
           </ul>
         </section>
-      ) : null
+      )
     }
   </main>
 
