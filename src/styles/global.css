@@ -6,6 +6,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Remove decorative backticks from inline code in prose */
+.prose code::before {
+  content: "" !important;
+}
+.prose code::after {
+  content: "" !important;
+}
+
 @theme inline {
   --font-sans: "Inter Variable", sans-serif;
   --font-heading: var(--font-sans);
