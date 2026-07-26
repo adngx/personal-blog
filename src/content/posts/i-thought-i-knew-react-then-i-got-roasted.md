@@ -89,6 +89,6 @@ First thing: I'm working through [Traversy Media's React fundamentals course](ht
 
 The goal is to **actually understand React** before moving to Next.js. Not just follow patterns and hope for the best.
 
-If I fill the gaps successfully, I'll turn the notes into a React Native → React transition cheatsheet and share the full roast session on YouTube. But that's after I've actually done the work — not before.
+If I fill the gaps successfully, I'll turn the notes into a React Native → React transition cheatsheet. The full roast session is also coming to YouTube soon — you can watch me get quizzed in real time and see exactly where I froze up.
 
 If you've been building with React, try the same quiz. Pick any 5 topics from the fundamentals and explain them out loud without Googling. You'll find your gaps in 10 minutes.
