@@ -3,12 +3,17 @@ import { z } from "astro/zod";
 const envSchema = z.object({
   SITE_URL: z.string().url("SITE_URL must be a valid URL"),
   TWITTER_HANDLE: z.string().optional().default(""),
+  NEWSLETTER_WORKER_URL: z
+    .string()
+    .url("NEWSLETTER_WORKER_URL must be a valid URL"),
 });
 
 const rawEnv = {
   SITE_URL:
     process.env.SITE_URL ?? process.env.CF_PAGES_URL ?? "http://localhost:4321",
   TWITTER_HANDLE: process.env.TWITTER_HANDLE ?? "",
+  NEWSLETTER_WORKER_URL:
+    process.env.NEWSLETTER_WORKER_URL ?? "http://localhost:8787",
 };
 
 const parsed = envSchema.safeParse(rawEnv);
@@ -23,4 +28,5 @@ if (!parsed.success) {
 
 export const SITE_URL = parsed.data.SITE_URL;
 export const TWITTER_HANDLE = parsed.data.TWITTER_HANDLE;
+export const NEWSLETTER_WORKER_URL = parsed.data.NEWSLETTER_WORKER_URL;
 export const SITE_NAME = "adngx";

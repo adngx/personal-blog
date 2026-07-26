@@ -34,6 +34,11 @@ const REQUIRED_CSP_EXCEPTIONS: ReadonlyArray<
     "frame-src",
     "Giscus comments iframe for blog post discussions",
   ],
+  [
+    "https://newsletter.adngx.com",
+    "connect-src",
+    "Newsletter signup Worker proxy for Buttondown subscriptions",
+  ],
 ] as const;
 
 /**

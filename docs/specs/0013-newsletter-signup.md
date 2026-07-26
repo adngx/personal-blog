@@ -1,7 +1,7 @@
 # 0013. Newsletter signup
 
 **Date**: 2026-07-26
-**Status**: Proposed
+**Status**: In Progress
 
 ## Summary
 

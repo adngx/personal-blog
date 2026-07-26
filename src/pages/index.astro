@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { buttonVariants } from "../components/ui/button";
+import { NewsletterSignup } from "../components/newsletter/newsletter-signup";
 import { formatDate } from "../lib/format-date";
 import { getCollection } from "astro:content";
 import { SITE_URL, SITE_NAME } from "../env";
@@ -102,6 +103,7 @@ const jsonLd = {
         </section>
       )
     }
+    <NewsletterSignup client:visible />
   </main>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
