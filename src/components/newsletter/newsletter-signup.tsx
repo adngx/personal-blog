@@ -2,9 +2,9 @@ import { useState, useRef, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const WORKER_URL = import.meta.env.DEV
-  ? "http://localhost:8787/api/subscribe"
-  : "https://newsletter.adngx.com/api/subscribe";
+const WORKER_URL =
+  import.meta.env.PUBLIC_NEWSLETTER_WORKER_URL ??
+  "https://newsletter.adngx.com/api/subscribe";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
