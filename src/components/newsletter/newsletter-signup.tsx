@@ -86,7 +86,7 @@ export function NewsletterSignup() {
         Newsletter
       </h2>
       <p className="text-muted-foreground mt-2">
-        Get new posts delivered to your inbox. No spam, unsubscribe anytime.
+        Early access to new posts, plus unfiltered notes and experiences.
       </p>
       <form onSubmit={handleSubmit} className="mt-4" noValidate>
         <div className="flex flex-col gap-3 sm:flex-row">
