@@ -9,7 +9,7 @@ I've been building mobile apps with React Native and Supabase for months. I had 
 
 Then I actually thought about it. I work with _React Native_, not React. A lot of the concepts are similar, but there are real differences — forms, routing, how lists render, even what JSX compiles to under the hood. I wasn't sure how much of my knowledge would transfer directly, and how much I'd need to relearn.
 
-So before jumping into Next.js, I asked an AI to quiz me on React fundamentals. 30 questions across 10 sections, topics from [Traversy Media's React course](https://start.dev/course/react-fundamentals) — JSX, props, state, effects, hooks, routing. The **basics**.
+So before jumping into Next.js, I asked an AI to quiz me on React fundamentals. 30 questions across 10 sections, topics from [Traversy Media's React course](https://start.dev/course/react-fundamentals) — JSX, props, state, effects, hooks, routing. The basics.
 
 **I scored 3 out of 10.**
 
@@ -34,8 +34,6 @@ It asked me things like "what is JSX?", "what's the difference between these two
 | Routing          | 1/10  | Platform difference, skipped                  |
 
 Overall: **3/10.**
-
-![AI assessment table showing React knowledge scores across 10 sections, ranging from 0/10 to 6/10 with an overall score of 3/10](../../assets/react-assessment-table.png)
 
 ## The rough moments
 
@@ -80,21 +78,17 @@ And it's not that React Native "made me worse" at React or anything like that. I
 As I'm writing this, there are things I still don't fully understand:
 
 - **`useReducer` vs `useState`**: I know `useReducer` exists. I know it's for "complex state logic." But I can't tell you when I'd actually reach for it over `useState`. Every explanation I've read feels abstract — I haven't hit a real problem where `useState` was clearly the wrong tool.
-- **Cleanup functions**: The quiz exposed this gap and I still haven't filled it. I understand the concept (return a function from `useEffect` to clean up), but I don't have a mental model for when it matters. In React Native, I've never explicitly needed one — or maybe I have and just didn't notice.
-- **Functional updates**: I understand the stale closure problem in theory. The `setCount(prev => prev + 1)` pattern makes sense when I read it. But I couldn't explain _when_ I'd actually run into this in a real app, not just a counter example.
+- **`useRef`**: I've seen it in code examples. I think it's for accessing DOM elements? But I've never used it in React Native, and I'm not sure what problem it solves that state doesn't.
+- **Dependency arrays**: The quiz flagged that I don't understand how `useEffect` dependency arrays actually work. I know the rule — "put everything you use inside the effect into the array" — but I don't have a mental model for what happens when you get it wrong, beyond "infinite loops maybe?"
 
 I'm sharing these not as things I'll fix later, but as things I'm genuinely confused about right now. If you know these well, I'd love to hear how you think about them.
 
 ## What's next
 
-I'm going to work through [Traversy Media's React fundamentals course](https://start.dev/course/react-fundamentals) properly. Not to learn everything from scratch, but to fill the specific gaps this quiz exposed — JSX mechanics, cleanup functions, controlled inputs, routing, the hooks I've never used.
-
-My approach: **code review exercises** instead of just watching videos. The AI gives me a component with some issues — bugs, anti-patterns, things that work but _aren't ideal_ — and I try to find and explain what's wrong. It's faster than writing code from scratch, and it tests whether I actually understand the concepts or just recognize patterns. I'll re-quiz myself after each section to see what actually stuck — **spaced repetition** over passive rereading.
-
-Once I've filled the gaps, I'm going to write a **React Native → React transition cheatsheet** — the concepts that transfer, the ones that don't, and the mental model shifts you need. If you're making the same move, that should save you some pain.
-
-I also recorded the full roast session as a YouTube video. It's coming soon — you can watch me get quizzed in real time and see exactly where I froze up.
+First thing: I'm working through [Traversy Media's React fundamentals course](https://start.dev/course/react-fundamentals), but with code review exercises instead of just watching videos. The AI gives me a component with some issues — bugs, anti-patterns, things that work but _aren't ideal_ — and I try to find and explain what's wrong. It's faster than writing code from scratch, and it tests whether I actually understand the concepts or just recognize patterns. I'll re-quiz myself after each section to see what actually stuck.
 
 The goal is to **actually understand React** before moving to Next.js. Not just follow patterns and hope for the best.
+
+If I fill the gaps successfully, I'll turn the notes into a React Native → React transition cheatsheet and share the full roast session on YouTube. But that's after I've actually done the work — not before.
 
 If you've been building with React, try the same quiz. Pick any 5 topics from the fundamentals and explain them out loud without Googling. You'll find your gaps in 10 minutes.
