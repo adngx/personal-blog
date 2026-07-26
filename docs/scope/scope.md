@@ -182,12 +182,12 @@ Buttondown integration for collecting email subscribers. A Cloudflare Worker pro
 - [x] Design it (spec): `/architect newsletter signup`
 - [ ] Build it: `/develop newsletter signup`
   - [ ] Create Cloudflare Worker with subscribe endpoint, honeypot, rate limiting, Buttondown API integration (AC-11, AC-12, AC-13, AC-14, AC-16, AC-17)
-  - [ ] Create newsletter signup React component with form, validation, states (AC-3, AC-4, AC-5, AC-6, AC-7, AC-8, AC-9, AC-10)
-  - [ ] Integrate component into homepage and blog post pages (AC-1, AC-2)
-  - [ ] Update CSP headers and tests for Worker subdomain (AC-15)
+  - [x] Create newsletter signup React component with form, validation, states (AC-3, AC-4, AC-5, AC-6, AC-7, AC-8, AC-9, AC-10)
+  - [x] Integrate component into homepage and blog post pages (AC-1, AC-2)
+  - [x] Update CSP headers and tests for Worker subdomain (AC-15)
   - [ ] Write tests for component and Worker
 - [ ] Verify it: `/check verify newsletter signup`
-- [ ] Test it: `/test newsletter signup`
+- [x] Test it: `/test newsletter signup`
 
 ### 19. Comments section · done
 

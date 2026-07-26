@@ -12,6 +12,7 @@ describe("NewsletterSignup", () => {
   afterEach(() => {
     cleanup();
     vi.restoreAllMocks();
+    mockFetch.mockClear();
   });
 
   // AC-3: Form displays as a card with heading, description, email input, and submit button
@@ -208,5 +209,58 @@ describe("NewsletterSignup", () => {
 
     const alert = await screen.findByRole("alert");
     expect(alert).toBeInTheDocument();
+  });
+
+  // AC-17: Honeypot filled silently succeeds without calling fetch
+  it("silently succeeds without calling fetch when honeypot is filled", async () => {
+    render(<NewsletterSignup />);
+    const honeypot = screen.getByLabelText(/leave this empty/i);
+    const button = screen.getByRole("button", { name: /subscribe/i });
+    const emailInput = screen.getByLabelText(/email address/i);
+
+    fireEvent.change(emailInput, { target: { value: "bot@example.com" } });
+    fireEvent.change(honeypot, { target: { value: "spam" } });
+    fireEvent.click(button);
+
+    expect(
+      await screen.findByText(
+        /check your email and click the confirmation link/i,
+      ),
+    ).toBeInTheDocument();
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  // AC-10: Input gets aria-invalid when validation error occurs
+  it("sets aria-invalid on input when email is invalid", async () => {
+    render(<NewsletterSignup />);
+    const input = screen.getByLabelText(/email address/i);
+    const button = screen.getByRole("button", { name: /subscribe/i });
+
+    fireEvent.change(input, { target: { value: "bad" } });
+    fireEvent.click(button);
+
+    await screen.findByRole("alert");
+    expect(input).toHaveAttribute("aria-invalid", "true");
+  });
+
+  // AC-10: Error message is linked to input via aria-describedby
+  it("links error message to input via aria-describedby", async () => {
+    mockFetch.mockRejectedValueOnce(new Error("fail"));
+
+    render(<NewsletterSignup />);
+    const input = screen.getByLabelText(/email address/i);
+    const button = screen.getByRole("button", { name: /subscribe/i });
+
+    fireEvent.change(input, { target: { value: "test@example.com" } });
+    fireEvent.click(button);
+
+    const alert = await screen.findByRole("alert");
+    expect(input).toHaveAttribute("aria-describedby", alert.id);
+  });
+
+  // AC-3: Description text is present
+  it("renders the newsletter description", () => {
+    render(<NewsletterSignup />);
+    expect(screen.getByText(/early access to new posts/i)).toBeInTheDocument();
   });
 });
