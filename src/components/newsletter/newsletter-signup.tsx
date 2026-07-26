@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 const WORKER_URL =
   import.meta.env.PUBLIC_NEWSLETTER_WORKER_URL ??
-  "https://newsletter.adngx.com/api/subscribe";
+  "https://newsletter-worker.ducnguyen2009.workers.dev/api/subscribe";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
