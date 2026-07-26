@@ -7,27 +7,27 @@ A personal blog for a high school student going into software development. Weekl
 
 ## At a glance
 
-| #   | Feature                    | Phase      | Status  |
-| --- | -------------------------- | ---------- | ------- |
-| 1   | Stack & architecture       | Foundation | done    |
-| 2   | Coding standards & tooling | Foundation | done    |
-| 3   | Design system              | Foundation | done    |
-| 4   | Data model                 | Foundation | done    |
-| 5   | Walking skeleton           | Release 1  | done    |
-| 6   | Post page                  | Release 1  | done    |
-| 7   | Homepage                   | Release 1  | done    |
-| 8   | About page                 | Release 1  | done    |
-| 9   | SEO enhancements           | Release 2  | done    |
-| 10  | Site footer                | Release 2  | done    |
-| 11  | Privacy policy page        | Release 2  | done    |
-| 12  | Newsletter signup          | Release 3  | planned |
-| 13  | 404 page                   | Quick wins | done    |
-| 14  | Reading time               | Quick wins | done    |
-| 15  | Security headers           | Quick wins | done    |
-| 16  | llms.txt                   | Quick wins | done    |
-| 17  | RSS feed                   | Quick wins | done    |
-| 18  | Per-post OG images         | Quick wins | done    |
-| 19  | Comments section           | Release 3  | done    |
+| #   | Feature                    | Phase      | Status      |
+| --- | -------------------------- | ---------- | ----------- |
+| 1   | Stack & architecture       | Foundation | done        |
+| 2   | Coding standards & tooling | Foundation | done        |
+| 3   | Design system              | Foundation | done        |
+| 4   | Data model                 | Foundation | done        |
+| 5   | Walking skeleton           | Release 1  | done        |
+| 6   | Post page                  | Release 1  | done        |
+| 7   | Homepage                   | Release 1  | done        |
+| 8   | About page                 | Release 1  | done        |
+| 9   | SEO enhancements           | Release 2  | done        |
+| 10  | Site footer                | Release 2  | done        |
+| 11  | Privacy policy page        | Release 2  | done        |
+| 12  | Newsletter signup          | Release 3  | in-progress |
+| 13  | 404 page                   | Quick wins | done        |
+| 14  | Reading time               | Quick wins | done        |
+| 15  | Security headers           | Quick wins | done        |
+| 16  | llms.txt                   | Quick wins | done        |
+| 17  | RSS feed                   | Quick wins | done        |
+| 18  | Per-post OG images         | Quick wins | done        |
+| 19  | Comments section           | Release 3  | done        |
 
 ## Foundation
 
@@ -174,15 +174,20 @@ A simple static page stating: no cookies, no tracking, no data collection. Good 
 
 ## Release 3: Newsletter
 
-### 12. Newsletter signup · needs a decision
+### 12. Newsletter signup · in-progress · spec [0013](../specs/0013-newsletter-signup.md)
 
-Resend integration for collecting email subscribers. A form on the site that sends confirmation emails and stores subscribers.
+Buttondown integration for collecting email subscribers. A Cloudflare Worker proxies subscription requests to Buttondown's API. A form on the site lets readers subscribe; Buttondown handles confirmation emails and double opt in.
 **Done when:** a reader can enter their email, receive a confirmation, and be added to the subscriber list.
 
-- [ ] Design it (spec): `/architect newsletter signup`
+- [x] Design it (spec): `/architect newsletter signup`
 - [ ] Build it: `/develop newsletter signup`
+  - [ ] Create Cloudflare Worker with subscribe endpoint, honeypot, rate limiting, Buttondown API integration (AC-11, AC-12, AC-13, AC-14, AC-16, AC-17)
+  - [x] Create newsletter signup React component with form, validation, states (AC-3, AC-4, AC-5, AC-6, AC-7, AC-8, AC-9, AC-10)
+  - [x] Integrate component into homepage and blog post pages (AC-1, AC-2)
+  - [x] Update CSP headers and tests for Worker subdomain (AC-15)
+  - [ ] Write tests for component and Worker
 - [ ] Verify it: `/check verify newsletter signup`
-- [ ] Test it: `/test newsletter signup`
+- [x] Test it: `/test newsletter signup`
 
 ### 19. Comments section · done
 

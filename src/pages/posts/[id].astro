@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { Badge } from "../../components/ui/badge";
 import { GiscusComments } from "../../components/comments/giscus-comments";
+import { NewsletterSignup } from "../../components/newsletter/newsletter-signup";
 import { formatDate } from "../../lib/format-date";
 import { readingTime } from "../../lib/reading-time";
 import { getCollection, render } from "astro:content";
@@ -86,7 +87,10 @@ const jsonLd = {
         )
       }
     </div>
-    <footer class="border-border mt-12 border-t pt-4">
+    <div class="mt-12">
+      <NewsletterSignup client:visible />
+    </div>
+    <footer class="border-border mt-8 border-t pt-4">
       <a href="/" class="text-link hover:underline">Back to home</a>
     </footer>
     <GiscusComments client:visible />

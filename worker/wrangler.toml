@@ -1,0 +1,11 @@
+name = "newsletter-worker"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://adngx.com"
+
+# KV namespace for rate limiting (create with: wrangler kv namespace create NEWSLETTER_KV)
+[[kv_namespaces]]
+binding = "NEWSLETTER_KV"
+id = "caf89495acac4fd3baa40bec0cde1fca"
