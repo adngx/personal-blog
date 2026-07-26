@@ -18,15 +18,22 @@ export default {
   },
 };
 
+function isAllowedOrigin(origin, env) {
+  if (!origin) return false;
+  if (origin === env.ALLOWED_ORIGIN) return true;
+  if (origin.endsWith(".adngx.pages.dev")) return true;
+  return false;
+}
+
 function handleOptions(request, env) {
   const origin = request.headers.get("Origin");
-  if (origin !== env.ALLOWED_ORIGIN) {
+  if (!isAllowedOrigin(origin, env)) {
     return new Response(null, { status: 403 });
   }
   return new Response(null, {
     status: 204,
     headers: {
-      "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN,
+      "Access-Control-Allow-Origin": origin,
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
     },
@@ -36,11 +43,11 @@ function handleOptions(request, env) {
 async function handleSubscribe(request, env) {
   const origin = request.headers.get("Origin");
   const corsHeaders = {
-    "Access-Control-Allow-Origin": env.ALLOWED_ORIGIN,
+    "Access-Control-Allow-Origin": origin || env.ALLOWED_ORIGIN,
     "Content-Type": "application/json",
   };
 
-  if (origin !== env.ALLOWED_ORIGIN) {
+  if (!isAllowedOrigin(origin, env)) {
     return new Response(JSON.stringify({ error: "Forbidden" }), {
       status: 403,
       headers: corsHeaders,
