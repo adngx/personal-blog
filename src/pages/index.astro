@@ -66,6 +66,10 @@ const jsonLd = {
       }
     </header>
 
+    <div class="mx-auto mt-8 max-w-[var(--container-prose)]">
+      <NewsletterSignup client:visible />
+    </div>
+
     {
       posts.length === 0 ? (
         <section class="mx-auto max-w-[var(--container-prose)] px-6 py-12 text-center">
@@ -103,7 +107,6 @@ const jsonLd = {
         </section>
       )
     }
-    <NewsletterSignup client:visible />
   </main>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
