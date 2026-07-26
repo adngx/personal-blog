@@ -137,17 +137,25 @@ async function handleSubscribe(request, env) {
     const errorText = await buttondownResponse.text();
     console.error("Buttondown error:", buttondownResponse.status, errorText);
 
-    return new Response(
-      JSON.stringify({
-        error: "Upstream error",
-        status: buttondownResponse.status,
-        detail: errorText,
-      }),
-      {
-        status: 500,
-        headers: corsHeaders,
-      },
-    );
+    let userMessage = "Something went wrong. Please try again.";
+    try {
+      const errorJson = JSON.parse(errorText);
+      if (errorJson.code === "subscriber_blocked") {
+        userMessage = "This email was blocked. Please try a different email.";
+      } else if (errorJson.code === "subscriber_already_exists") {
+        return new Response(JSON.stringify({ message: "Subscriber created" }), {
+          status: 201,
+          headers: corsHeaders,
+        });
+      }
+    } catch {
+      // not JSON, use default message
+    }
+
+    return new Response(JSON.stringify({ error: userMessage }), {
+      status: buttondownResponse.status === 400 ? 400 : 500,
+      headers: corsHeaders,
+    });
   } catch (e) {
     console.error("Unhandled error:", e);
     return new Response(

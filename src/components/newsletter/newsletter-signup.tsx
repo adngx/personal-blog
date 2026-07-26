@@ -51,8 +51,15 @@ export function NewsletterSignup() {
         setState("error");
         setErrorMessage("Too many attempts. Please try again later.");
       } else {
+        let msg = "Something went wrong. Please try again.";
+        try {
+          const data = await response.json();
+          if (data.error) msg = data.error;
+        } catch {
+          // use default message
+        }
         setState("error");
-        setErrorMessage("Something went wrong. Please try again.");
+        setErrorMessage(msg);
       }
     } catch {
       setState("error");
