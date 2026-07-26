@@ -39,6 +39,11 @@ const REQUIRED_CSP_EXCEPTIONS: ReadonlyArray<
     "connect-src",
     "Newsletter signup Worker proxy for Buttondown subscriptions",
   ],
+  [
+    "https://newsletter-worker.ducnguyen2009.workers.dev",
+    "connect-src",
+    "Newsletter Worker direct URL for preview deployments",
+  ],
 ] as const;
 
 /**
