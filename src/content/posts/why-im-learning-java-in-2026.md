@@ -69,7 +69,7 @@ Java is a good deep bet for the AI era specifically. Its static, deterministic s
 
 A heavily-upvoted r/java comment I found puts it better than I can:
 
-> "When you consider that a large corporation can employ as many people as 500-10,000 startups and that only 10% of those startups survive and the rest are replaced by companies that eventually pick some other language according to the fashion of the day, you see why what startups do is not necessarily a good indicator of where the industry is going."
+> When you consider that a large corporation can employ as many people as 500-10,000 startups and that only 10% of those startups survive and the rest are replaced by companies that eventually pick some other language according to the fashion of the day, you see why what startups do is not necessarily a good indicator of where the industry is going.
 
 Quick applications have chased the language of the moment for decades: PHP, then Ruby, then Python, then Node. Java has been the constant through all of them. The survivors that bet on the fashionable option? Facebook picked PHP and had to invent Hack to scale it. Stripe and Shopify picked Ruby and spent years bolting types onto it. The commenter's punchline: "those who picked Java (and survived) virtually always ended up happy with their choice."
 
