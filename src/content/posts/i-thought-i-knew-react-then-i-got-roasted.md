@@ -2,7 +2,7 @@
 title: "I Thought I Knew React. Then I Got Roasted."
 description: "I've been building React Native apps for months. Then an AI quizzed me on React fundamentals and I scored 3/10."
 pubDate: 2026-07-25
-tags: ["react", "learning", "beginners", "react native", "nextjs"]
+tags: ["react", "learning", "beginners"]
 ---
 
 I've been building mobile apps with React Native and Supabase for months. I had a working GTD app, I could scaffold a project, wire up state, fetch data, handle auth. So when I decided it was time to move on to full-stack frameworks like Next.js, I figured I already knew React well enough.

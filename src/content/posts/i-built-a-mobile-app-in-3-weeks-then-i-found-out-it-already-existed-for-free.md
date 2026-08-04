@@ -2,7 +2,7 @@
 title: "I Built a Mobile App in 3 Weeks. Then I Found Out It Already Existed — for Free."
 description: "I learned JavaScript, built a GTD app in 3 weeks, and thought I was ready to start a business. Then I found out my app already existed, for free."
 pubDate: 2026-07-15
-tags: ["beginners", "learning", "projects", "business"]
+tags: ["beginners", "learning", "projects", "business", "react-native", "gtd"]
 ---
 
 I'd been coding for maybe two months. I'd learned JavaScript, pivoted to AI agents in Python, and thought: I'm ready to build a business. Not a side project. A business.
