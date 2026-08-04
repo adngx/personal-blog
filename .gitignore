@@ -9,3 +9,6 @@ public/og/default.png
 
 # Drafts
 docs/drafts/
+
+# Local agent/tool config
+reasonix.toml

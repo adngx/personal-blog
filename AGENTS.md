@@ -77,4 +77,13 @@ Stored in `docs/specs/`. Format: `docs/specs/NNNN-title.md` (or `docs/specs/NNNN
 
 <!-- Nested AGENTS.md files are listed here as they are created -->
 
+## Wiki Consultation
+
+Before writing or editing blog content, consult the personal knowledge wiki at `C:\my-second-brain\wiki\` for related topic pages. The wiki contains deeper context on every subject covered in blog posts.
+
+After publishing a post:
+
+1. Add the post to `C:\my-second-brain\wiki\entities\blog.md` under the "Posts" section
+2. Add cross-references from relevant topic pages back to the post (the post in the wiki, NOT IN THE CODE, BECAUSE THE POST IN THE CODE IS GONNA BE PUBLISHED)
+
 _Drafted by /audit from the repo, worth a quick human pass. Edit freely: once a line stops matching this draft, later runs treat it as curated and will flag rather than overwrite it._
