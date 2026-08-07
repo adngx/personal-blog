@@ -71,7 +71,7 @@ export function NewsletterSignup() {
     return (
       <section
         aria-labelledby="newsletter-heading"
-        className="border-border bg-card mx-auto max-w-[var(--container-prose)] rounded-lg border p-6"
+        className="bg-card mx-auto max-w-[var(--container-prose)] rounded-lg p-6"
       >
         <h2 id="newsletter-heading" className="text-2xl font-bold">
           Newsletter
@@ -87,7 +87,7 @@ export function NewsletterSignup() {
   return (
     <section
       aria-labelledby="newsletter-heading"
-      className="border-border bg-card mx-auto max-w-[var(--container-prose)] rounded-lg border p-6"
+      className="bg-card mx-auto max-w-[var(--container-prose)] rounded-lg p-6"
     >
       <h2 id="newsletter-heading" className="text-2xl font-bold">
         Newsletter
