@@ -4,7 +4,7 @@ import { Badge } from "../../components/ui/badge";
 import { GiscusComments } from "../../components/comments/giscus-comments";
 import { NewsletterSignup } from "../../components/newsletter/newsletter-signup";
 import { formatDate } from "../../lib/format-date";
-import { readingStats } from "../../lib/reading-time";
+import { readingTime, readingStats } from "../../lib/reading-time";
 import { getCollection, render } from "astro:content";
 import { SITE_URL } from "../../env";
 
@@ -59,6 +59,10 @@ const jsonLd = {
   ogType="article"
   ogImage={ogImage}
   twitterCard="summary_large_image"
+  articlePublishedTime={post.data.pubDate.toISOString()}
+  articleModifiedTime={(
+    post.data.updatedDate ?? post.data.pubDate
+  ).toISOString()}
 >
   <article
     id="main-content"
