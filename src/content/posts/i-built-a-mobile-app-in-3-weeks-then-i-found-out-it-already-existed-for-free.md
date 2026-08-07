@@ -1,6 +1,11 @@
 ---
 title: "I Built a Mobile App in 3 Weeks. Then I Found Out It Already Existed — for Free."
 description: "I learned JavaScript, built a GTD app in 3 weeks, and thought I was ready to start a business. Then I found out my app already existed, for free."
+summary: "I built a GTD app in three weeks and thought I had a business — then found Mindwtr, a free, open-source app that already had every feature I built and more."
+takeaways:
+  - "Research existing solutions before writing code: a day of searching beats three weeks of building."
+  - "Confidence without competence is just ignorance with momentum (Dunning-Kruger)."
+  - "Learn fundamentals like git and databases alongside projects, not after you fail."
 pubDate: 2026-07-15
 tags: ["beginners", "learning", "projects", "business", "react-native", "gtd"]
 ---

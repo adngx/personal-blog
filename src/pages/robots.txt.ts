@@ -5,7 +5,7 @@ export function GET() {
     "User-agent: *",
     "Allow: /",
     "",
-    "Content-Signal: ai-train=no, search=yes, ai-input=no",
+    "Content-Signal: ai-train=no, search=yes, ai-input=yes",
     "",
     `Sitemap: ${new URL("/sitemap-index.xml", SITE_URL).href}`,
   ].join("\n");

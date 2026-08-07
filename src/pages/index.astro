@@ -4,24 +4,32 @@ import { buttonVariants } from "../components/ui/button";
 import { NewsletterSignup } from "../components/newsletter/newsletter-signup";
 import { formatDate } from "../lib/format-date";
 import { getCollection } from "astro:content";
+import { socialLinks } from "../data/social-links";
+import { AUTHOR_NAME, AUTHOR_DESCRIPTION } from "../data/identity";
 import { SITE_URL, SITE_NAME } from "../env";
 
 const posts = (await getCollection("posts"))
   .filter((post) => !import.meta.env.PROD || !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
+const personId = new URL("/about/", SITE_URL).href + "#person";
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebSite",
+      "@id": new URL("/", SITE_URL).href + "#website",
       name: SITE_NAME,
       url: SITE_URL,
+      publisher: { "@id": personId },
     },
     {
       "@type": "Blog",
+      "@id": new URL("/", SITE_URL).href + "#blog",
       name: SITE_NAME,
       url: SITE_URL,
+      author: { "@id": personId },
       blogPost: posts.map((post) => ({
         "@type": "BlogPosting",
         headline: post.data.title,
@@ -29,6 +37,16 @@ const jsonLd = {
         description: post.data.description,
         url: new URL(`/posts/${post.id}`, SITE_URL).href,
       })),
+    },
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: AUTHOR_NAME,
+      url: SITE_URL,
+      description: AUTHOR_DESCRIPTION,
+      sameAs: socialLinks
+        .filter((link) => link.url.startsWith("http"))
+        .map((link) => link.url),
     },
   ],
 };
@@ -40,11 +58,12 @@ const jsonLd = {
 >
   <main id="main-content">
     <header
-      class="border-border bg-card mx-auto max-w-[var(--container-prose)] rounded-lg border p-6"
+      class="bg-card mx-auto max-w-[var(--container-prose)] rounded-lg p-6"
     >
       <h1 class="text-4xl font-bold tracking-tight">Anh-Duc Nguyen, 16</h1>
       <p class="text-muted-foreground mt-2 italic">
-        High school student, Writer, Developer
+        High school student · learning Java &amp; Spring Boot for the German
+        market
       </p>
       <p class="mt-4 max-w-prose">
         I learn software development in public. Writing helps me think clearly,

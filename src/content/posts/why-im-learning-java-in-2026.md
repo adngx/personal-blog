@@ -1,6 +1,11 @@
 ---
 title: "Why I'm Learning Java in 2026"
 description: "Everyone says Java is dying. I'm learning Java and Spring Boot in 2026, and here's why the 'boring' language is a career strategy."
+summary: "Yes — Java is still worth learning in 2026: Netflix calls it the best trade-off between runtime performance, developer productivity, and maintainability, and it's the deepest skill for the German enterprise market I'm targeting."
+takeaways:
+  - "Netflix runs its backend on the JVM by choice, not by accident."
+  - "German enterprise employers describe Java as constant demand; Bitkom counts 155,000 unfilled IT positions."
+  - "Startup languages churn with fashion; Java has been the constant through every wave."
 pubDate: 2026-08-04
 tags: ["java", "spring-boot", "learning", "career", "beginners"]
 draft: false
