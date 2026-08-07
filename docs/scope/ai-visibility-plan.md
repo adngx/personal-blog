@@ -173,7 +173,7 @@ Organized by **who does the work**, spec-style (Goal / Do / Verify) so both an A
 
 An agent runs these in the repo: implement → `npm run test` → `npm run build` → commit → deploy to Cloudflare Pages → verify against the production URL. Nothing here loads new external domains, so the CSP (`public/_headers`) and `headers.test.ts` stay untouched.
 
-**Commit discipline (atomic):** one small, atomic commit per task — each `AI-x` ships as its own commit with a conventional message (`type(scope): description`), containing only that task's changes (no bundling several `AI-x`s together, no unrelated edits, no stray files like `.reasonix/`). Deploy right after each commit so any regression is traceable to a single change.
+**Commit discipline (atomic):** one small, atomic commit per task — each `AI-x` ships as its own commit with a conventional message (`type(scope): description`), containing only that task's changes (no bundling several `AI-x`s together, no unrelated edits, no stray files like `.reasonix/`).
 
 **AI-1 — Make the author a person in structured data** _(highest leverage)_
 

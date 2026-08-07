@@ -12,3 +12,4 @@ docs/drafts/
 
 # Local agent/tool config
 reasonix.toml
+.reasonix/
