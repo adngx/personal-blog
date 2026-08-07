@@ -4,9 +4,9 @@ import { Badge } from "../../components/ui/badge";
 import { GiscusComments } from "../../components/comments/giscus-comments";
 import { NewsletterSignup } from "../../components/newsletter/newsletter-signup";
 import { formatDate } from "../../lib/format-date";
-import { readingTime } from "../../lib/reading-time";
+import { readingStats } from "../../lib/reading-time";
 import { getCollection, render } from "astro:content";
-import { SITE_URL, SITE_NAME } from "../../env";
+import { SITE_URL } from "../../env";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("posts")).filter(
@@ -23,6 +23,8 @@ const { Content } = await render(post);
 
 const postUrl = new URL(`/posts/${post.id}`, SITE_URL).href;
 const ogImage = new URL(`/og/posts/${post.id}.png`, SITE_URL).href;
+const personId = new URL("/about/", SITE_URL).href + "#person";
+const { words, minutes } = readingStats(post.body ?? "");
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -32,9 +34,17 @@ const jsonLd = {
   dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
   author: {
     "@type": "Person",
-    name: SITE_NAME,
-    url: SITE_URL,
+    "@id": personId,
   },
+  publisher: {
+    "@type": "Person",
+    "@id": personId,
+  },
+  mainEntityOfPage: postUrl,
+  inLanguage: "en",
+  keywords: post.data.tags,
+  wordCount: words,
+  timeRequired: `PT${minutes}M`,
   description: post.data.description,
   image: ogImage,
   url: postUrl,

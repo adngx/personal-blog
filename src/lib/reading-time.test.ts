@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { readingTime } from "./reading-time";
+import { readingTime, readingStats } from "./reading-time";
 
 describe("readingTime", () => {
   it("returns '1 min read' for empty content", () => {
@@ -53,5 +53,32 @@ describe("readingTime", () => {
     const markdown =
       "# Title\n\n## Subtitle\n\n" + Array(230).fill("word").join(" ");
     expect(readingTime(markdown)).toBe("2 min read");
+  });
+});
+
+describe("readingStats", () => {
+  it("counts words and minutes for plain text", () => {
+    const words = Array(230).fill("word").join(" ");
+    expect(readingStats(words)).toEqual({ words: 230, minutes: 1 });
+  });
+
+  it("rounds minutes up to the nearest minute", () => {
+    const words = Array(231).fill("word").join(" ");
+    expect(readingStats(words).minutes).toBe(2);
+  });
+
+  it("floors empty content at 1 minute with 0 words", () => {
+    expect(readingStats("")).toEqual({ words: 0, minutes: 1 });
+  });
+
+  it("strips markdown before counting words", () => {
+    const markdown =
+      "```\nconst x = 1;\n```\n\n" +
+      "![alt text](image.png)\n\n" +
+      "[click here](https://example.com)\n\n" +
+      "# Title\n\n" +
+      Array(230).fill("word").join(" ");
+    expect(readingStats(markdown).words).toBe(233);
+    expect(readingStats(markdown).minutes).toBe(2);
   });
 });
