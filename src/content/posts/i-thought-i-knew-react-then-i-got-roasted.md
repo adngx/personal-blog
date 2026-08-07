@@ -1,6 +1,11 @@
 ---
 title: "I Thought I Knew React. Then I Got Roasted."
 description: "I've been building React Native apps for months. Then an AI quizzed me on React fundamentals and I scored 3/10."
+summary: "You can build with React for months and still score 3/10 on fundamentals — I did, and the fix is explaining concepts out loud instead of just following patterns."
+takeaways:
+  - "Building and explaining are different skills: every place you stumble when explaining is a gap."
+  - "React Native knowledge doesn't transfer one-to-one to web React (forms, routing, list rendering all differ)."
+  - "Learn with code review exercises and re-quiz yourself — passive watching hides gaps."
 pubDate: 2026-07-25
 tags: ["react", "learning", "beginners"]
 ---
