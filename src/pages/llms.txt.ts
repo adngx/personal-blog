@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { socialLinks } from "../data/social-links";
+import { AUTHOR_NAME, AUTHOR_DESCRIPTION } from "../data/identity";
 import { SITE_URL, SITE_NAME } from "../env";
 
 export const GET: APIRoute = async () => {
@@ -11,6 +13,17 @@ export const GET: APIRoute = async () => {
     `# ${SITE_NAME}`,
     "",
     "> A personal blog about software development. Learning in public as a high school student.",
+    "",
+    "## Identity",
+    "",
+    AUTHOR_DESCRIPTION,
+    "",
+    `- Name: ${AUTHOR_NAME}`,
+    ...socialLinks
+      .filter((link) => link.url.startsWith("http"))
+      .map((link) => `- ${link.label}: ${link.url}`),
+    `- Email: contact@adngx.com`,
+    `- Full post bodies: [llms-full.txt](${SITE_URL}/llms-full.txt)`,
     "",
     "## Pages",
     "",
