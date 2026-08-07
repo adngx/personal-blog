@@ -4,6 +4,7 @@ import { getCollection, render } from "astro:content";
 import { transform, walk } from "ultrahtml";
 import sanitize from "ultrahtml/transformers/sanitize";
 import { SITE_URL, SITE_NAME } from "../env";
+import { AUTHOR_DESCRIPTION } from "../data/identity";
 
 export async function GET() {
   // Normalize the base URL for absolute link/image rewriting (no trailing slash).
@@ -52,7 +53,7 @@ export async function GET() {
 
   return rss({
     title: SITE_NAME,
-    description: "A personal blog about software development",
+    description: AUTHOR_DESCRIPTION,
     site: baseUrl,
     items,
     customData: "<language>en-us</language>",

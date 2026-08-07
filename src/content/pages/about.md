@@ -1,11 +1,11 @@
 ---
 title: "About Me"
-description: "A high school student learning software development in public. Weekly posts about code, tools, and the journey."
+description: "Anh-Duc Nguyen is a 16-year-old high school student in Vietnam teaching himself Java and Spring Boot in public, on his way to study computer science in Germany."
 ---
 
 ## About Me
 
-Anh-Duc Nguyen, 16, high school student in Vietnam.
+Anh-Duc Nguyen is a 16-year-old high school student in Vietnam teaching himself Java and Spring Boot in public, on his way to study computer science in Germany.
 
 ## Why this blog
 
@@ -13,8 +13,8 @@ I started this blog to document what I'm learning as I dive into software develo
 
 ## What I'm learning
 
-Right now I'm focused on the fundamentals — Git, database. I'm also interested in software design, systems thinking, and building things that actually work.
+I'm going deep on Java and Spring Boot — the stack of Germany's enterprise market, where I'm planning to study computer science — while keeping React and TypeScript as my broad base. I also work with databases (PostgreSQL, Supabase) and with software design and systems thinking.
 
 ## Goals
 
-I want to become a strong engineer who writes clear code and explains ideas well. This blog is practice for both. I aim to post weekly — short, honest reflections on what I'm working through.
+I want to become a strong engineer who writes clear code and explains ideas well. This blog is practice for both: every learning phase ships a post, and the weekly newsletter is the short loop.
