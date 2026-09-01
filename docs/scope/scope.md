@@ -1,6 +1,6 @@
 # Scope: Personal Blog
 
-A personal blog for a high school student going into software development. Weekly learn-in-public posts targeting both students and senior engineers. Complements a social media presence, not replaces it.
+A personal blog for a high school student learning cybersecurity in public, on his way to study IT-Sicherheit (cybersecurity) in Germany. Learn-in-public posts targeting both students and aspiring security engineers. Complements a social media presence, not replaces it.
 
 **Build approach:** Skateboard (ship the thinnest usable whole, then grow it).
 **Weight profile:** SEO and comments are full (cross cutting risk, compliance); everything else lean or medium.

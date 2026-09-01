@@ -9,4 +9,4 @@
 export const AUTHOR_NAME = "Anh-Duc Nguyen";
 
 export const AUTHOR_DESCRIPTION =
-  "Anh-Duc Nguyen is a 16-year-old high school student in Vietnam teaching himself Java and Spring Boot in public, on his way to study computer science in Germany.";
+  "Anh-Duc Nguyen is a high school student teaching himself cybersecurity in public, on his way to study IT-Sicherheit (cybersecurity) in Germany.";

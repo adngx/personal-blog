@@ -5,11 +5,11 @@
 
 ## Summary
 
-This decision establishes the full technical stack for a personal blog targeting a high school student going into software development. The stack prioritizes simplicity, near zero cost, and fast iteration over scale or advanced features. Astro with static site generation forms the foundation, paired with Tailwind CSS for styling, shadcn/ui for components, and Cloudflare Pages for hosting. Dynamic features like comments and newsletter are deferred to later phases, using Supabase and Resend when needed.
+This decision establishes the full technical stack for a personal blog targeting a high school student learning cybersecurity in public. The stack prioritizes simplicity, near zero cost, and fast iteration over scale or advanced features. Astro with static site generation forms the foundation, paired with Tailwind CSS for styling, shadcn/ui for components, and Cloudflare Pages for hosting. Dynamic features like comments and newsletter are deferred to later phases, using Supabase and Resend when needed.
 
 ## Context
 
-A high school student wants to build a personal blog to document their software development journey. The blog will host weekly learn in public posts, complementing a social media presence. The project must be near zero cost (free tier services only), simple enough to build and maintain alone, and fast to iterate on. The student has limited time between schoolwork and other commitments, so the stack must minimize operational overhead and debugging complexity.
+A high school student wants to build a personal blog to document their cybersecurity learning journey. The blog will host weekly learn in public posts, complementing a social media presence. The project must be near zero cost (free tier services only), simple enough to build and maintain alone, and fast to iterate on. The student has limited time between schoolwork and other commitments, so the stack must minimize operational overhead and debugging complexity.
 
 The blog will start as a static site with mostly read only content. Dynamic features (comments, newsletter signup) are planned for later phases but should not complicate the initial architecture. SEO is important for discoverability, but advanced analytics can wait. The domain is already purchased on Cloudflare Registrar, making Cloudflare Pages the natural hosting choice.
 

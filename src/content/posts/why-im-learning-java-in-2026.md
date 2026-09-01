@@ -11,6 +11,8 @@ tags: ["java", "spring-boot", "learning", "career", "beginners"]
 draft: false
 ---
 
+> **Update (August 2026):** This post is a decision record, and the decision has since changed. Cybersecurity is now my deep skill — Java and Spring Boot are frozen. The post about the pivot is coming; until then, the current direction is on the [About page](/about).
+
 > Java is the best trade-off between runtime performance, developer productivity, and maintainability.
 
 That's Paul Bakker, a Netflix engineer, in a JavaOne 2026 talk called [How Netflix Uses Java](https://www.youtube.com/watch?v=ucJTPda_zx0&t=571s). Netflix serves hundreds of millions of people, and its backend runs on the JVM. Not because the company is stuck. It chose this, deliberately, year after year.

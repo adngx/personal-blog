@@ -10,6 +10,8 @@ pubDate: 2026-07-15
 tags: ["beginners", "learning", "projects", "business", "react-native", "gtd"]
 ---
 
+_Note: this post is from an earlier phase of my journey — my current focus is cybersecurity._
+
 I'd been coding for maybe two months. I'd learned JavaScript, pivoted to AI agents in Python, and thought: I'm ready to build a business. Not a side project. A business.
 
 Three weeks later, I downloaded someone else's app and realized mine was already dead.

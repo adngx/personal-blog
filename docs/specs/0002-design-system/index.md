@@ -9,7 +9,7 @@ This decision establishes the design system for the personal blog: a minimalist 
 
 ## Context
 
-The blog is for a high school student going into software development. It needs a visual identity that feels clean, minimal, and content focused, not corporate or overly "developer" themed. The reference aesthetic is Expo's blog, but more muted: pure black and white base, no monospace fonts, no vibrant colors. WCAG AA accessibility is a project rule, so color contrast and semantic structure are requirements, not nice to haves.
+The blog is for a high school student learning cybersecurity in public. It needs a visual identity that feels clean, minimal, and content focused, not corporate or overly "developer" themed. The reference aesthetic is Expo's blog, but more muted: pure black and white base, no monospace fonts, no vibrant colors. WCAG AA accessibility is a project rule, so color contrast and semantic structure are requirements, not nice to haves.
 
 The project already uses Tailwind CSS and shadcn/ui (decided in spec 0001). The current stylesheet is `src/styles/global.css`, which defines a full shadcn token set in oklch using Tailwind v4's CSS-first `@theme inline` configuration (no `tailwind.config.*` file). The project currently self-hosts Geist font via `@fontsource-variable/geist`. The design system must build on these tools and conventions, not introduce a separate styling framework. Both light and dark modes are needed from the start because the toggle is a core part of the blog's identity and accessibility story.
 

@@ -12,7 +12,7 @@ export const GET: APIRoute = async () => {
   const lines = [
     `# ${SITE_NAME}`,
     "",
-    "> A personal blog about software development. Learning in public as a high school student.",
+    "> A personal blog about learning cybersecurity in public. Learning in public as a high school student.",
     "",
     "## Identity",
     "",
