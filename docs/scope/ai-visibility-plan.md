@@ -129,15 +129,15 @@ Section 3 was written for "a blog". This section is what it was missing: the pla
 - Solo learner, ADHD tendencies: every tactic must be build-first and low-ceremony; nothing that requires "maintaining a content calendar".
 - Post cadence floor: one post per learning phase (~2–3 months); the weekly newsletter is the short loop (`wiki/entities/blog.md`).
 
-**Current assets (verified live, plus §3):** 3 posts — "Why I'm Learning Java in 2026" (flagship), "I Thought I Knew React. Then I Got Roasted.", "I Built a Mobile App in 3 Weeks…". Newsletter (Buttondown) on homepage + every post. GitHub `adngx`, X `adngx0`, email contact@adngx.com (`src/data/social-links.ts`). Already cross-posting: **dev.to** (`dev.to/adngx`, joined Jul 2026, 2 of 3 posts) and **Hashnode** (`adngx.hashnode.dev`, all 3 posts, ships its own sitemap/RSS).
+**Current assets (verified live, plus §3):** 3 posts — "Why I'm Learning Java in 2026" (flagship), "I Thought I Knew React. Then I Got Roasted.", "I Built a Mobile App in 3 Weeks…". Newsletter (Buttondown) on homepage + every post. GitHub `adngx`, X `adngx0`, email contact@adngx.com (`src/data/social-links.ts`). dev.to and Hashnode were dropped 2026-09-01 — no longer maintained, no cross-posting.
 
 **Identity gaps the wiki check surfaced (new):**
 
 1. **No LinkedIn** in `social-links.ts` — LinkedIn is one of the sources AI models cite most for people, and the platform German recruiters actually use. Highest-value identity gap. **Known blocker: account verification has failed repeatedly — see M-5 for the fallback plan; no other task depends on it.**
-2. **dev.to + Hashnode exist but aren't wired into the entity graph** — `dev.to/adngx` (2 of 3 posts, 1 comment, a few reactions) and `adngx.hashnode.dev` (all 3 posts) are live, but neither is in `social-links.ts`, so they never reach JSON-LD `sameAs` or the llms.txt identity section. dev.to's bio is also stale and contradicts the current direction: skills say "React, Database", no cybersecurity, and it still promises "try to post weekly".
+2. **dev.to + Hashnode — ✅ DROPPED 2026-09-01**: removed from `social-links.ts` (and therefore JSON-LD `sameAs` and the llms.txt identity section); no longer maintained, no cross-posting.
 3. **Stale About page — ✅ FIXED 2026-09-01**: now states the cybersecurity direction (deep skill), RUB Bochum IT-Sicherheit plan, and frozen earlier tracks; matches the approved sentence word-for-word.
 4. Author JSON-LD is the brand "adngx", not the person (already P1 in §3).
-5. **The site's own `robots.txt` declares `Content-Signal: ai-input=no`** — semantically "don't use this content as AI input", the opposite of AI visibility. Verified as the cause of Claude web chat refusing the site: it claimed "no AI-specific signals (no llms.txt, no dev.to)" — both false, both exist and serve 200. Fixed by AI-4 (§6.1).
+5. **The site's own `robots.txt` declares `Content-Signal: ai-input=no`** — semantically "don't use this content as AI input", the opposite of AI visibility. Verified as the cause of Claude web chat refusing the site: it claimed "no AI-specific signals (no llms.txt)" — false, the site serves llms.txt with 200. Fixed by AI-4 (§6.1).
 
 ## 5. Positioning & content strategy
 
@@ -145,7 +145,7 @@ Section 3 was written for "a blog". This section is what it was missing: the pla
 
 > Anh-Duc Nguyen is a high school student teaching himself cybersecurity in public, on his way to study IT-Sicherheit (cybersecurity) in Germany.
 
-Places it must appear, word-for-word on the phrases that matter: About page, GitHub profile bio, X bio, LinkedIn headline + about, dev.to bio, Hashnode about, newsletter footer, `llms.txt` identity section, JSON-LD Person `name`/`description`, RSS `<description>`. When sources agree word-for-word, models repeat the sentence; when they disagree, they play safe and name someone else.
+Places it must appear, word-for-word on the phrases that matter: About page, GitHub profile bio, X bio, LinkedIn headline + about, newsletter footer, `llms.txt` identity section, JSON-LD Person `name`/`description`, RSS `<description>`. When sources agree word-for-word, models repeat the sentence; when they disagree, they play safe and name someone else.
 
 **5.2 Content pillars → AI-answerable queries.** Each learning phase ships one post aimed at one query (the report's roadmap already implies this; here are the concrete queries):
 
@@ -178,7 +178,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 **AI-1 — Make the author a person in structured data** _(highest leverage)_
 
 - Goal: Every page's JSON-LD identifies the author as the person Anh-Duc Nguyen, not the "adngx" brand, and every entity links to the same identity node.
-- Do: On the About page define a stable `Person` node with a permanent id (`/about#person`), `name: "Anh-Duc Nguyen"`, description = the approved one sentence (from AI-7), and `sameAs` = GitHub, X, dev.to, Hashnode (+ LinkedIn once it exists). Link the homepage `WebSite`/`Blog` to that Person. On every post, set `author` to that Person **by id** (not a name string), and enrich `BlogPosting` with `publisher`, `mainEntityOfPage`, `inLanguage: "en"`, `keywords` (from post tags), `wordCount`, `timeRequired` (reading time already computed in the codebase).
+- Do: On the About page define a stable `Person` node with a permanent id (`/about#person`), `name: "Anh-Duc Nguyen"`, description = the approved one sentence (from AI-7), and `sameAs` = GitHub, X (+ LinkedIn once it exists). Link the homepage `WebSite`/`Blog` to that Person. On every post, set `author` to that Person **by id** (not a name string), and enrich `BlogPosting` with `publisher`, `mainEntityOfPage`, `inLanguage: "en"`, `keywords` (from post tags), `wordCount`, `timeRequired` (reading time already computed in the codebase).
 - Verify: post pages' JSON-LD shows `"author": {"@id": ".../about#person"}`; `seo.test.ts` covers the new fields and the id link; build passes.
 
 **AI-2 — Identity block in llms.txt**
@@ -196,7 +196,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 **AI-4 — Fix the robots.txt AI signal** _(do first — verified breakage)_
 
 - Goal: stop declaring "don't use this content as AI input".
-- Do: change the `Content-Signal` line in `robots.txt` to `ai-train=no, search=yes, ai-input=yes`. Keep the `Sitemap` line. (Why: `ai-input=no` made Claude web chat refuse the site — it claimed "no llms.txt, no dev.to", both false. Evidence in §7.)
+- Do: change the `Content-Signal` line in `robots.txt` to `ai-train=no, search=yes, ai-input=yes`. Keep the `Sitemap` line. (Why: `ai-input=no` made Claude web chat refuse the site — it claimed "no llms.txt", which was false. Evidence in §7.)
 - Verify: `curl https://adngx.com/robots.txt` shows `ai-input=yes`; then re-run the Claude audit (M-1) — it should fetch the site normally.
 
 **AI-5 — Freshness tags on posts**
@@ -247,7 +247,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 **M-1 — Run the Claude audit** (now, 1 Pomodoro; re-run after AI-4 ships)
 
 - Do: paste `https://adngx.com` into Claude web chat: "How visible is this site in AI search, and why isn't it showing up?"
-- Treat every claim as a hypothesis — the first audit said "no llms.txt, no dev.to" (both false; cause was `ai-input=no`, now fixed in AI-4). Verify claims before acting.
+- Treat every claim as a hypothesis — the first audit said "no llms.txt" (false; cause was `ai-input=no`, now fixed in AI-4). Verify claims before acting.
 
 **M-2 — Approve the one sentence** (1 Pomodoro; gate for AI-1/AI-2/AI-7/M-3)
 
@@ -255,7 +255,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 
 **M-3 — Update profile bios** (after M-2, ~2 Pomodoros)
 
-- Do: paste the approved sentence into: GitHub profile bio, X bio, newsletter (Buttondown) footer. On dev.to: replace the stale bio/skills ("React, Database", "try to post weekly") with the sentence + cybersecurity, and post the missing GTD article (dev.to has 2 of 3 posts).
+- Do: paste the approved sentence into: GitHub profile bio, X bio, newsletter (Buttondown) footer.
 - Verify: the sentence is word-for-word identical everywhere.
 
 **M-4 — Cloudflare bot settings** (after AI-8, ~1 Pomodoro)
@@ -275,7 +275,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 
 **M-7 — Earned media, tied to the post cadence** (~82% of AI citations are earned media; also the precondition for Wikidata)
 
-- Do: after each post — cross-post to dev.to + Hashnode (both already set up); share on HN (Show HN only when a project ships), r/cybersecurity, r/netsec, r/ITCareerQuestions, r/cybersecurityEU (r/learnprogramming for fundamentals posts), and r/germany for German-market posts; pitch security/tech newsletters (TLDR, Security Weekly, etc.); tag the creators whose content the post builds on (swyx's PUWTPD: consume → create → tag).
+- Do: after each post — share on HN (Show HN only when a project ships), r/cybersecurity, r/netsec, r/ITCareerQuestions, r/cybersecurityEU (r/learnprogramming for fundamentals posts), and r/germany for German-market posts; pitch security/tech newsletters (TLDR, Security Weekly, etc.); tag the creators whose content the post builds on (swyx's PUWTPD: consume → create → tag).
 - Target one "listicle-class" mention (student developer blogs, learn-in-public, cybersecurity learning, IT-Sicherheit-in-Germany analysis) — one such mention moves broad queries and unlocks Wikidata (M-8).
 
 **M-8 — Wikidata — parked until earned media**
@@ -294,7 +294,7 @@ Content stays English until after Goethe B2 (Mar 2027) — readers and the Germa
 | Week 1                      | AI-1, AI-2, AI-3, AI-5, AI-9 (one session)                                    | agent       |
 | Week 1                      | M-2 approve the one sentence                                                  | you         |
 | Week 1–2                    | AI-7 (About rewrite + one sentence everywhere), AI-6 (summary cards) → deploy | agent       |
-| Week 1–2                    | M-3 bios (GitHub, X, newsletter, dev.to + missing GTD post)                   | you         |
+| Week 1–2                    | M-3 bios (GitHub, X, newsletter)                                              | you         |
 | Week 2                      | AI-8 crawler report → M-4 Cloudflare settings → re-run AI-8                   | agent + you |
 | Week 2                      | AI-10 query list → M-6 tracker baseline                                       | agent + you |
 | Week 2–3                    | M-5 LinkedIn (verification attempt; retry monthly if stuck)                   | you         |
@@ -304,25 +304,25 @@ Content stays English until after Goethe B2 (Mar 2027) — readers and the Germa
 
 ### 6.5 How this differs from the original report (§3) — and why
 
-| §3 said                                         | This plan                                                                                                                                           | Why                                                                                                                                        |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Create Wikidata entry now ("a few hours")       | Parked until first earned-media mention (M-8)                                                                                                       | Wikidata notability policy requires significant coverage; a student with no press coverage gets rejected/deleted                           |
-| llms.txt as a signal                            | Keep as-is, spend zero more time                                                                                                                    | Real crawler logs (Buytaert, Jul 2026): AI crawlers almost never request `llms.txt`/Markdown                                               |
-| GSC / Bing / earned media as separate options   | One system: GSC + Bing + earned media                                                                                                               | Engines cite differently: Perplexity = recency + mentions; AI Overviews = E-E-A-T; Copilot = Bing authority                                |
-| GSC + Bing WMT + SITE_URL ops note as tasks     | ✅ Already done — removed from the plan                                                                                                             | Done before this refinement                                                                                                                |
-| LinkedIn create + verify                        | M-5, flagged as a persistent verification blocker with a fallback                                                                                   | You've repeatedly failed account verification; the plan must not depend on it                                                              |
-| Vietnamese dev community in earned media        | Dropped                                                                                                                                             | You said skip it                                                                                                                           |
-| —                                               | LinkedIn created; dev.to + Hashnode wired into the identity (they already existed, but weren't in `social-links.ts`/`sameAs`; dev.to bio was stale) | All are top AI-cited surfaces for people; LinkedIn is also what German recruiters use                                                      |
-| —                                               | About page rewrite (AI-7)                                                                                                                           | It still says "Git, database" — identity inconsistency is the failure mode the podcast describes                                           |
-| `ai-input=no` only flagged for "review" (§3 2b) | Changed to `ai-input=yes` with verified evidence it was breaking things                                                                             | Claude web chat refused the site and claimed "no llms.txt / no dev.to" — both false; `ai-input=no` is semantically "don't use as AI input" |
-| —                                               | German-language phase post-B2 (§6.3)                                                                                                                | Multilingual GEO: content must exist in the query language to be retrieved                                                                 |
-| Coding / non-coding split                       | Split by actor: AI-executable (6.1) vs manual (6.2), spec-style                                                                                     | Agents can now execute the repo tasks end-to-end without a human in the loop                                                               |
+| §3 said                                         | This plan                                                                                  | Why                                                                                                                       |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| Create Wikidata entry now ("a few hours")       | Parked until first earned-media mention (M-8)                                              | Wikidata notability policy requires significant coverage; a student with no press coverage gets rejected/deleted          |
+| llms.txt as a signal                            | Keep as-is, spend zero more time                                                           | Real crawler logs (Buytaert, Jul 2026): AI crawlers almost never request `llms.txt`/Markdown                              |
+| GSC / Bing / earned media as separate options   | One system: GSC + Bing + earned media                                                      | Engines cite differently: Perplexity = recency + mentions; AI Overviews = E-E-A-T; Copilot = Bing authority               |
+| GSC + Bing WMT + SITE_URL ops note as tasks     | ✅ Already done — removed from the plan                                                    | Done before this refinement                                                                                               |
+| LinkedIn create + verify                        | M-5, flagged as a persistent verification blocker with a fallback                          | You've repeatedly failed account verification; the plan must not depend on it                                             |
+| Vietnamese dev community in earned media        | Dropped                                                                                    | You said skip it                                                                                                          |
+| —                                               | dev.to + Hashnode dropped (removed from `social-links.ts`/`sameAs`; no more cross-posting) | Cross-posting wasn't worth the maintenance; GitHub + X remain the owned identity surfaces                                 |
+| —                                               | About page rewrite (AI-7)                                                                  | It still says "Git, database" — identity inconsistency is the failure mode the podcast describes                          |
+| `ai-input=no` only flagged for "review" (§3 2b) | Changed to `ai-input=yes` with verified evidence it was breaking things                    | Claude web chat refused the site and claimed "no llms.txt" — false; `ai-input=no` is semantically "don't use as AI input" |
+| —                                               | German-language phase post-B2 (§6.3)                                                       | Multilingual GEO: content must exist in the query language to be retrieved                                                |
+| Coding / non-coding split                       | Split by actor: AI-executable (6.1) vs manual (6.2), spec-style                            | Agents can now execute the repo tasks end-to-end without a human in the loop                                              |
 
 ## 7. Additional research evidence (July–Aug 2026)
 
 - **Wikidata notability gate**: data outside Wikidata's notability guidelines "won't be accepted"; people need significant coverage in reliable sources; Wikibase Cloud is the listed alternative for non-notable data (https://www.wikidata.org/wiki/Wikidata:Notability).
 - **llms.txt crawler reality**: Buytaert's Cloudflare log analysis — AI crawlers fetched ~1,241 pages per citation, rarely request Markdown, never use content negotiation or llms.txt (https://dri.es/markdown-llms-txt-and-ai-crawlers).
 - **Engine-specific citation factors**: Perplexity = recency + external mentions; Google AI Overviews = SEO authority (E-E-A-T); Copilot = Bing authority + technical structure (https://www.trygeometrics.com/blog/why-chatgpt-gemini-perplexity-cite-differently-9-models).
-- **Multilingual GEO**: content must exist in the query language to be retrieved; multilingual signals completeness/credibility to AI (https://www.weglot.com/multilingual-geo-hub; https://dev.to/mio_storksoft/geo-for-multilingual-content-how-to-appear-in-ai-search-answers-across-languages-cmg).
+- **Multilingual GEO**: content must exist in the query language to be retrieved; multilingual signals completeness/credibility to AI (https://www.weglot.com/multilingual-geo-hub).
 - **Content-Signals semantics (verified cause of the Claude fetch failure)**: `ai-input=no` is the opt-out for sites that don't want to be used as AI input (e.g. Q&A/docs cannibalization); the AI-visibility config is `ai-input=yes` (https://contentsignals.org/; https://www.searchengineworld.com/cloudflare-enters-the-robots-txt-fray-with-a-content-signals-policy-for-ai-bots). Cloudflare auto-applies Content-Signals to managed robots.txt on ~3.8M domains (https://arstechnica.com/ai/2025/10/inside-the-web-infrastructure-revolt-over-googles-ai-overviews).
 - **Claude web fetch behavior**: Claude's web fetch tool reads specific URLs (https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool); it has known flakiness against bot-protected or headless-blocked endpoints (https://github.com/anthropics/claude-code/issues/39896). Site-side verification (curl with crawler UAs) is the reliable way to check access.

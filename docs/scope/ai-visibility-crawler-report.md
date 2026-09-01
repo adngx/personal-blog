@@ -29,7 +29,7 @@ crawlers. M-4 (bot settings) needs no changes based on this evidence.
 - `/robots.txt` serves `Content-Signal: ai-train=no, search=yes, ai-input=yes`
   and the sitemap URL with the production domain.
 - `/llms.txt` opens with the Identity section: the one approved sentence,
-  author name, GitHub/X/dev.to/Hashnode links, llms-full.txt pointer.
+  author name, GitHub/X/email links, llms-full.txt pointer.
 - `/sitemap-index.xml` resolves to `/sitemap-0.xml` listing all 6 pages.
 - Post page returns 200 with full HTML (TL;DR card, JSON-LD, article meta).
 
