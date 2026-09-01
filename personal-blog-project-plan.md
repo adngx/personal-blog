@@ -2,7 +2,7 @@
 
 ## Purpose
 
-I am a high school student going to study computer science in college. After college I want to be a SWE (preferably senior level) and build my startup on the side.
+I am a high school student going to study IT-Sicherheit (cybersecurity) in Germany. After university I want to be a security engineer — cloud security in the long run — and build my startup on the side.
 
 Right now I don't have shareable, valuable skills other than self-studying and making decisions on my own — so I'll mainly write about what I'm learning and what strategies I'm using, in a weekly-update format.
 
@@ -76,7 +76,7 @@ Right now I don't have shareable, valuable skills other than self-studying and m
 ## Strategic rationale (why a blog, and not just social media or pure skill-building)
 
 - **swyx's "Learn in Public"** — real senior engineer/DevRel career built substantially on this; the framing is that writing publicly mainly benefits future-you, and eventually it matters to own your domain and mailing list rather than just posting on rented platforms (Medium, Dev.to, social).
-- **Hiring signal** — a Hacker News hiring manager noted that even a sparse blog is a meaningful edge over candidates with nothing like it, directly relevant to your senior-SWE goal.
+- **Hiring signal** — a Hacker News hiring manager noted that even a sparse blog is a meaningful edge over candidates with nothing like it, directly relevant to your security-engineering goal.
 - **SEO/audience timeline** — indie hacker consensus: months 1–2 look like nothing is happening, months 3–6 traffic starts trickling in, months 7–12+ is where compounding kicks in. Quitting early is the actual failure mode, not the strategy itself.
 - **Blog vs. social media** — the consistent advice across founder communities is to run both in parallel: social media surfaces content, the blog gives it a permanent, ownable home. Nobody serious argues it's either/or.
 - **Your advantage** — you're not doing product SEO (which needs market validation first); you're doing personal-brand SEO, which has no such prerequisite and can start on day one. Combined with a multi-year runway before college/job-hunting, you're well positioned for a strategy that specifically rewards time.

@@ -81,7 +81,7 @@ Today the author is `{"@type": "Person", "name": "adngx", "url": SITE_URL}` — 
 2. **Google Search Console** (podcast step 4): verify adngx.com, submit `https://adngx.com/sitemap-index.xml`. Direct line to Google AI Overviews. Podcast team: 91 pages indexed, ~700 clicks/month. Expect ~4 weeks before Google identifies you.
 3. **Bing Webmaster Tools**: verify + submit sitemap. Bing's index feeds Copilot and part of ChatGPT search traffic.
 4. **Create your Wikidata entry** (podcast step 3 — "moved everything the most"). Verified: **no entry exists**. QID for Anh-Duc Nguyen: `instance of: human`, occupation (software developer / student / writer), educated at, official website, GitHub, social accounts. Feeds Google Knowledge Graph and Gemini. A few hours.
-5. **One identical sentence everywhere** (podcast core principle): when sources disagree AI plays safe; when they agree word-for-word it repeats your sentence. One sentence, e.g. _"Anh-Duc Nguyen is a high school student learning software development in public."_ — same words in About page, Wikidata, GitHub bio, LinkedIn, X bio, newsletter footer.
+5. **One identical sentence everywhere** (podcast core principle): when sources disagree AI plays safe; when they agree word-for-word it repeats your sentence. One sentence, e.g. _"Anh-Duc Nguyen is a high school student teaching himself cybersecurity in public, on his way to study IT-Sicherheit (cybersecurity) in Germany."_ — same words in About page, Wikidata, GitHub bio, LinkedIn, X bio, newsletter footer.
 6. **Match titles to AI-query phrasing**: think in the questions people type — "is Java worth learning in 2026?", "should I learn React or React Native?". Existing titles are already question-shaped; tune against tracker data.
 7. **Pick one tracker, watch weekly** (podcast step 5): **Peec AI** (podcast's tool), **Aperture** (open-source, self-hosted, free), **OpenLens** (free tier), Similarweb AI Search Intelligence, Yext, Adobe Brand Visibility. Small tracked-query set; trends over weeks not days.
 8. **Earned media is the endgame**: ~82% of what AI cites is other people talking about you. Share posts on HN/Reddit (`r/webdev`, `r/learnprogramming`, `r/java`), pitch dev newsletters (Java Weekly, TLDR, etc.), get into listicles — a single Forbes-style mention moves broad "best X" queries.
@@ -113,14 +113,14 @@ Today the author is `{"@type": "Person", "name": "adngx", "url": SITE_URL}` — 
 
 Section 3 was written for "a blog". This section is what it was missing: the plan's target is _me_. Every action below was chosen because it serves these facts, taken from `C:\my-second-brain` (`wiki/profile.md`, `wiki/entities/blog.md`, `wiki/plans/*`, `wiki/topics/*`).
 
-**Identity.** Anh-Duc Nguyen, 16, high school student in Vietnam, entering senior year September 2026 (specialized math class). Self-taught developer. Planning computer science at TU Dortmund via Studienbrücke (direct entry, no Studienkolleg). B2 German (Goethe B2) by March 2027. Long arc: study → Werkstudent → employment → citizenship → startup.
+**Identity.** Anh-Duc Nguyen, high school student in Vietnam, entering senior year September 2026 (specialized math class). Self-taught; **cybersecurity is the deep skill** (decision #21, 2026-08-16 — all other tracks frozen). University decision final (ledger #20): **IT-Sicherheit at RUB Bochum** via Studienbrücke (fallback TU Dortmund AngInf). B2 German (Goethe B2) by March 2027. Long arc: study → Werkstudent → employment → citizenship → startup. _Refreshed 2026-09-01 to match ledger #20/#21._
 
 **What the blog is actually for** (`wiki/entities/blog.md`): a _retrieval mechanism_ (writing is how I retain what I learn) and a _portfolio signal_ (public proof of skills for recruiters). It is not a traffic business. So AI visibility is a means, not the goal:
 
 - AI recommendations attack the "no experience" problem — when a recruiter, or anyone researching junior devs / student blogs, asks an AI, the blog answers for me (`wiki/topics/first-software-internship`: projects over GPA).
-- The same machine identity that makes AI cite the blog is what German employers see — adesso SE and Materna are both Dortmund-HQ with Java/cloud focus (`wiki/entities/adesso-se`, `wiki/entities/materna`), and Java is the deep skill I'm building for that market.
+- The same machine identity that makes AI cite the blog is what German employers see — the target market is Germany with a long-term role vision of **cloud security engineer/architect** (ledger #22), grounded in the NRW security job-market report (`wiki/syntheses/nrw-it-security-jobs-2026`).
 
-**Distinctiveness (the niche).** Almost nobody occupies this position: a Vietnamese high-schooler learning **Java/Spring Boot (deep) + React/TypeScript (broad)** for the **German enterprise market**, documented in public with real research (Netflix's JavaOne trade-off talk, Jobriver listing data, Bitkom's 155k unfilled IT positions). AI answers about "Java in Germany 2026" or "best programming language for jobs in Germany" draw on very few English-language first-hand sources — the blog can become one. That is the honest GEO moat: generic React tutorials cannot claim it.
+**Distinctiveness (the niche).** Almost nobody occupies this position: a Vietnamese high-schooler learning **cybersecurity (deep) — networking, Linux, Python as a security tool, cryptography — roadmap-first** for **IT-Sicherheit at RUB Bochum, Germany**, documented in public with real research (the organized roadmap spine + hands-on labs per topic, `wiki/plans/learning-path` #24/#26). AI answers about "cybersecurity roadmap 2026" or "how to start cybersecurity as a student" draw on very few English-language first-hand sources — the blog can become one. That is the honest GEO moat: generic React/Java tutorials cannot claim it.
 
 **Constraints that shape every time estimate in this plan** (`wiki/profile.md`):
 
@@ -134,32 +134,32 @@ Section 3 was written for "a blog". This section is what it was missing: the pla
 **Identity gaps the wiki check surfaced (new):**
 
 1. **No LinkedIn** in `social-links.ts` — LinkedIn is one of the sources AI models cite most for people, and the platform German recruiters actually use. Highest-value identity gap. **Known blocker: account verification has failed repeatedly — see M-5 for the fallback plan; no other task depends on it.**
-2. **dev.to + Hashnode exist but aren't wired into the entity graph** — `dev.to/adngx` (2 of 3 posts, 1 comment, a few reactions) and `adngx.hashnode.dev` (all 3 posts) are live, but neither is in `social-links.ts`, so they never reach JSON-LD `sameAs` or the llms.txt identity section. dev.to's bio is also stale and contradicts the pivot: skills say "React, Database", no Java/Spring Boot, and it still promises "try to post weekly".
-3. **Stale About page** — `src/content/pages/about.md` still says "focused on the fundamentals — Git, database" and "aim to post weekly"; the real position (Java/Spring Boot pivot, Germany) is not what the machine reads. Identity inconsistency is exactly the failure mode the podcast describes.
+2. **dev.to + Hashnode exist but aren't wired into the entity graph** — `dev.to/adngx` (2 of 3 posts, 1 comment, a few reactions) and `adngx.hashnode.dev` (all 3 posts) are live, but neither is in `social-links.ts`, so they never reach JSON-LD `sameAs` or the llms.txt identity section. dev.to's bio is also stale and contradicts the current direction: skills say "React, Database", no cybersecurity, and it still promises "try to post weekly".
+3. **Stale About page — ✅ FIXED 2026-09-01**: now states the cybersecurity direction (deep skill), RUB Bochum IT-Sicherheit plan, and frozen earlier tracks; matches the approved sentence word-for-word.
 4. Author JSON-LD is the brand "adngx", not the person (already P1 in §3).
 5. **The site's own `robots.txt` declares `Content-Signal: ai-input=no`** — semantically "don't use this content as AI input", the opposite of AI visibility. Verified as the cause of Claude web chat refusing the site: it claimed "no AI-specific signals (no llms.txt, no dev.to)" — both false, both exist and serve 200. Fixed by AI-4 (§6.1).
 
 ## 5. Positioning & content strategy
 
-**5.1 The one sentence (podcast core principle: identical phrasing everywhere).** Draft — to be confirmed before mass-copying:
+**5.1 The one sentence (podcast core principle: identical phrasing everywhere).** ✅ **Approved 2026-09-01** (site updated — `src/data/identity.ts`):
 
-> Anh-Duc Nguyen is a 16-year-old high school student in Vietnam teaching himself Java and Spring Boot in public, on his way to study computer science in Germany.
+> Anh-Duc Nguyen is a high school student teaching himself cybersecurity in public, on his way to study IT-Sicherheit (cybersecurity) in Germany.
 
 Places it must appear, word-for-word on the phrases that matter: About page, GitHub profile bio, X bio, LinkedIn headline + about, dev.to bio, Hashnode about, newsletter footer, `llms.txt` identity section, JSON-LD Person `name`/`description`, RSS `<description>`. When sources agree word-for-word, models repeat the sentence; when they disagree, they play safe and name someone else.
 
 **5.2 Content pillars → AI-answerable queries.** Each learning phase ships one post aimed at one query (the report's roadmap already implies this; here are the concrete queries):
 
-| Pillar (wiki)                                                    | Post type                                   | Queries to win                                                                                                                                                                       |
-| ---------------------------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Java/Spring Boot pivot (active)                                  | Trade-off analysis (Netflix, German market) | "is Java worth learning in 2026", "Java or TypeScript backend 2026", "is Java dead" — flagship post exists, title already query-shaped                                               |
-| German tech market (research already done)                       | Data-backed analysis                        | "best programming language for jobs in Germany", "Java jobs in Germany", "Java or Spring Boot for enterprise" — the Java post's market angle, few English first-hand sources; unique |
-| Databases / PostgreSQL / Supabase (active ultralearning project) | Build log + schema decisions                | "PostgreSQL vs Supabase", "how to design a database schema"                                                                                                                          |
-| Learn in public / ultralearning (methodology)                    | Method post                                 | "how to learn programming in public", "ultralearning software development"                                                                                                           |
-| React/Next.js lessons (past)                                     | Retrospective                               | "React Native vs React", "how to learn React properly"                                                                                                                               |
-| Productivity / GTD (Ord app story)                               | Story                                       | "open source GTD app", "self-hosted GTD app"                                                                                                                                         |
-| System design (simple-first philosophy)                          | Architecture thinking                       | "how to learn system design", "when to use microservices"                                                                                                                            |
+| Pillar (wiki)                                                           | Post type                                  | Queries to win                                                                                                                                                        |
+| ----------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cybersecurity fundamentals (active — deep skill, decision #21)          | Roadmap-topic posts (one topic = one post) | "cybersecurity roadmap 2026", "how to start cybersecurity as a student", "is cybersecurity worth learning in 2026" — next post: the Java → cybersecurity pivot record |
+| German security job market (research done, `nrw-it-security-jobs-2026`) | Data-backed analysis                       | "IT-Sicherheit jobs Germany", "cybersecurity jobs in Germany", "cloud security engineer career path"                                                                  |
+| Python / Linux / networking (tools within the track)                    | Hands-on lab writeups                      | "how to learn networking hands-on", "wireshark first capture", "linux basics for security"                                                                            |
+| Learn in public / ultralearning (methodology)                           | Method post                                | "how to learn in public", "ultralearning cybersecurity"                                                                                                               |
+| Java/Spring Boot pivot (historical — frozen, #21)                       | Decision record (update banner added)      | "is Java worth learning in 2026", "Java or TypeScript backend 2026" — flagship post exists, title already query-shaped                                                |
+| React/Next.js lessons (past)                                            | Retrospective                              | "React Native vs React", "how to learn React properly"                                                                                                                |
+| Productivity / GTD (Ord app story)                                      | Story                                      | "open source GTD app", "self-hosted GTD app"                                                                                                                          |
 
-**5.3 Hero post treatment.** "Why I'm Learning Java in 2026" is already the strongest GEO asset: query-shaped title, the answer (Netflix trade-off quote) in the first lines, tables, named sources, first-person. Rule for every future post: put the direct answer in the first 30% of the page — 55% of AI Overview citations come from the first 30% (CXL, cited in §3) — implemented as the AI-6 summary card.
+**5.3 Hero post treatment.** The Java post is a historical decision record (now carries an update banner pointing at the pivot); the **next flagship is the Java → cybersecurity pivot post** — query-shaped title, the answer in the first lines, named decisions (ledger #20/#21), first-person. Rule for every future post: put the direct answer in the first 30% of the page — 55% of AI Overview citations come from the first 30% (CXL, cited in §3) — implemented as the AI-6 summary card.
 
 **5.4 Language.** Content stays English now (readers and the German market both read English). German-language GEO is a real second move (§6.3) — schedule it after B2, not before.
 
@@ -212,7 +212,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
   - Add a per-post frontmatter field (e.g. `summary`) for the card's content.
   - Render a static (non-island) summary card in the post layout, directly under the header (after tags, before the prose) — same shell as the hero card on the front page (`border-border bg-card mx-auto max-w-[var(--container-prose)] rounded-lg border p-6`), but with **normal body text** (`max-w-prose`, no `text-muted-foreground`): the summary is primary content, full-contrast like the hero card, not the muted secondary blurb the newsletter card uses. Small bold label ("TL;DR" / "Short answer") as the card heading.
   - Content: one sentence answering the post's target query + up to 3 one-line takeaways. Keep it short — a long card defeats the purpose.
-  - Draft the content for the 3 existing posts (the Java post's opening already answers — tighten it into card form) and tune titles/descriptions to the §5.2 queries.
+  - Draft the summary content for the existing posts (the Java post's opening still answers its own question — tighten it into card form) and tune titles/descriptions to the §5.2 queries.
   - Static HTML, no JS: the newsletter card is an island only because it's interactive; the summary card must be server-rendered so crawlers and AI read it without JS.
 - Verify: on each post the card is the first content element after the header and fully visible in the first screen; page renders with JS disabled; build + tests pass.
 
@@ -237,7 +237,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 **AI-10 — Tracked-query list** _(input for M-6)_
 
 - Goal: a ready-to-use baseline list for the tracker.
-- Do: derive 10–15 queries from §5.2 — mix of topic queries ("is Java worth learning in 2026", "best programming language for jobs in Germany", "Spring Boot vs NestJS", "Java lernen 2026") and identity queries (your name, adngx.com, your post titles).
+- Do: derive 10–15 queries from §5.2 — mix of topic queries ("cybersecurity roadmap 2026", "how to start cybersecurity as a student", "IT-Sicherheit jobs Germany", "cloud security engineer career path") and identity queries (your name, adngx.com, your post titles).
 - Verify: list written to a file/note the tracker can use.
 
 **Watch, no action:** `ai.txt` — adoption is still mixed; revisit only if it wins.
@@ -255,7 +255,7 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 
 **M-3 — Update profile bios** (after M-2, ~2 Pomodoros)
 
-- Do: paste the approved sentence into: GitHub profile bio, X bio, newsletter (Buttondown) footer. On dev.to: replace the stale bio/skills ("React, Database", "try to post weekly") with the sentence + Java/Spring Boot, and post the missing GTD article (dev.to has 2 of 3 posts).
+- Do: paste the approved sentence into: GitHub profile bio, X bio, newsletter (Buttondown) footer. On dev.to: replace the stale bio/skills ("React, Database", "try to post weekly") with the sentence + cybersecurity, and post the missing GTD article (dev.to has 2 of 3 posts).
 - Verify: the sentence is word-for-word identical everywhere.
 
 **M-4 — Cloudflare bot settings** (after AI-8, ~1 Pomodoro)
@@ -275,12 +275,12 @@ An agent runs these in the repo: implement → `npm run test` → `npm run build
 
 **M-7 — Earned media, tied to the post cadence** (~82% of AI citations are earned media; also the precondition for Wikidata)
 
-- Do: after each post — cross-post to dev.to + Hashnode (both already set up); share on HN (Show HN only when a project ships), r/learnjava, r/learnprogramming, r/cscareerquestionsEU, and r/germany for German-market posts; pitch dev newsletters (Java Weekly, TLDR, Bytes, This Week in Spring); tag the creators whose content the post builds on (swyx's PUWTPD: consume → create → tag) — swyx, Amigoscode, Bro Code, Telusko are already in the wiki.
-- Target one "listicle-class" mention (student developer blogs, learn-in-public, Java learning, Java-in-Germany market analysis) — one such mention moves broad queries and unlocks Wikidata (M-8).
+- Do: after each post — cross-post to dev.to + Hashnode (both already set up); share on HN (Show HN only when a project ships), r/cybersecurity, r/netsec, r/ITCareerQuestions, r/cybersecurityEU (r/learnprogramming for fundamentals posts), and r/germany for German-market posts; pitch security/tech newsletters (TLDR, Security Weekly, etc.); tag the creators whose content the post builds on (swyx's PUWTPD: consume → create → tag).
+- Target one "listicle-class" mention (student developer blogs, learn-in-public, cybersecurity learning, IT-Sicherheit-in-Germany analysis) — one such mention moves broad queries and unlocks Wikidata (M-8).
 
 **M-8 — Wikidata — parked until earned media**
 
-- Do: nothing now. When the first earned-media mention lands (M-7), create the entry: `instance of: human`; occupation software developer / student / writer; educated at TU Dortmund (once enrolled); official website adngx.com; GitHub, X, LinkedIn. Notability policy: without coverage the entry gets deleted, so wait.
+- Do: nothing now. When the first earned-media mention lands (M-7), create the entry: `instance of: human`; occupation student / writer; educated at RUB Bochum (once enrolled); official website adngx.com; GitHub, X, LinkedIn. Notability policy: without coverage the entry gets deleted, so wait.
 
 ### 6.3 German-language phase (scheduled, not now)
 

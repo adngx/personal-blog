@@ -7,32 +7,34 @@ baseline now. A query is "won" when the blog (adngx.com) or the author is named
 in the answer or in a cited source. Judge trends over weeks, not days — Google
 took ~4 weeks to index the podcast site in the reference case.
 
+_Refreshed 2026-09-01 to match the cybersecurity direction (ledger #20/#21)._
+
 ## Topic queries (10)
 
-1. `is Java worth learning in 2026`
-2. `Java or TypeScript backend 2026`
-3. `is Java dead`
-4. `best programming language for jobs in Germany`
-5. `Java jobs in Germany`
-6. `Spring Boot vs NestJS`
-7. `PostgreSQL vs Supabase`
-8. `how to learn React properly`
-9. `React Native vs React`
-10. `open source GTD app`
+1. `cybersecurity roadmap 2026`
+2. `how to start cybersecurity as a student`
+3. `is cybersecurity worth learning in 2026`
+4. `IT-Sicherheit jobs Germany`
+5. `cybersecurity jobs in Germany`
+6. `cloud security engineer career path`
+7. `how to learn networking hands-on`
+8. `python for security`
+9. `is Java worth learning in 2026` (historical post — still an indexed asset)
+10. `React Native vs React` (historical post)
 
 ## Identity queries (4)
 
 11. `Anh-Duc Nguyen`
 12. `adngx`
 13. `Anh-Duc Nguyen blog`
-14. `adngx Java Spring Boot`
+14. `adngx cybersecurity`
 
 ## Deferred (post-Goethe B2, §6.3 German phase)
 
-- `Java lernen 2026`
-- `Spring Boot lernen`
+- `Cybersecurity lernen`
+- `IT-Sicherheit studieren`
 - `Informatik Jobs Deutschland`
-- `self-hosted GTD app` (publish the GTD post on dev.to first — M-3)
+- `IT-Sicherheit Jobs Deutschland`
 
 ## Notes
 

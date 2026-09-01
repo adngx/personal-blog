@@ -257,9 +257,7 @@ describe("Person JSON-LD construction (AC-7)", () => {
 
     expect(jsonLd["@id"]).toBe("https://adngx.com/about/#person");
     expect(jsonLd.description).toBe(AUTHOR_DESCRIPTION);
-    expect(jsonLd.description).toContain(
-      "teaching himself Java and Spring Boot",
-    );
+    expect(jsonLd.description).toContain("teaching himself cybersecurity");
   });
 
   it("filters out non-http links from sameAs", () => {
@@ -482,9 +480,11 @@ describe("AI-visibility signals (scope: ai-visibility-plan)", () => {
         "utf-8",
       );
       expect(identity).toContain(AUTHOR_DESCRIPTION);
-      expect(AUTHOR_DESCRIPTION).toContain("16-year-old");
-      expect(AUTHOR_DESCRIPTION).toContain("Java and Spring Boot");
+      expect(AUTHOR_DESCRIPTION).toContain("high school student");
+      expect(AUTHOR_DESCRIPTION).toContain("cybersecurity");
+      expect(AUTHOR_DESCRIPTION).toContain("IT-Sicherheit");
       expect(AUTHOR_DESCRIPTION).toContain("Germany");
+      expect(AUTHOR_DESCRIPTION).not.toContain("16-year-old");
     });
   });
 
