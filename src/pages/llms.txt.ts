@@ -27,7 +27,7 @@ export const GET: APIRoute = async () => {
     "",
     "## Pages",
     "",
-    `- [Blog](${SITE_URL}/) — Post listing`,
+    `- [Blog](${SITE_URL}/blog) — Post listing`,
     `- [About](${SITE_URL}/about) — About the author`,
     `- [Privacy Policy](${SITE_URL}/privacy-policy) — Privacy policy`,
     "",
