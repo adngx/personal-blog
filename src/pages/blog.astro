@@ -50,11 +50,11 @@ const jsonLd = {
 >
   <main
     id="main-content"
-    class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
+    class="mx-auto max-w-[var(--container-wide)] px-6 py-24 sm:py-32"
   >
-    <header class="mb-8">
-      <h1 class="text-4xl font-bold">Blog</h1>
-      <p class="text-muted-foreground mt-2">
+    <header class="mb-12 sm:mb-16">
+      <h1 class="text-5xl font-bold tracking-tight">Blog</h1>
+      <p class="text-muted-foreground mt-3 text-lg">
         Everything I've written, newest first.
       </p>
     </header>
@@ -65,22 +65,24 @@ const jsonLd = {
           No posts yet. Check back soon.
         </p>
       ) : (
-        <ul class="flex flex-col gap-8">
+        <ul class="flex flex-col gap-12 sm:gap-14">
           {posts.map((post) => (
             <li>
               <a
                 href={`/posts/${post.id}`}
-                class="text-foreground text-lg font-semibold hover:underline"
+                class="text-foreground text-xl font-semibold break-words hover:underline sm:text-2xl"
               >
                 {post.data.title}
               </a>
               <time
-                class="text-muted-foreground mt-1 block text-sm"
+                class="text-muted-foreground mt-2 block text-sm sm:text-base"
                 datetime={post.data.pubDate.toISOString()}
               >
                 {formatDate(post.data.pubDate)}
               </time>
-              <p class="text-muted-foreground mt-1">{post.data.description}</p>
+              <p class="text-muted-foreground mt-2 text-base sm:text-lg">
+                {post.data.description}
+              </p>
             </li>
           ))}
         </ul>

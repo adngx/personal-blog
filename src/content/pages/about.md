@@ -7,7 +7,7 @@ description: "Anh-Duc Nguyen is a high school student teaching himself cybersecu
 
 Anh-Duc Nguyen is a high school student teaching himself cybersecurity in public, on his way to study IT-Sicherheit (cybersecurity) in Germany.
 
-# My mission
+## My mission
 
 I love building things that deliver actual value to people, but at the same time I don't want to push out slop that can cause significant consequences. That's why I choose cybersecurity: building and securing the system is what I love the most.
 

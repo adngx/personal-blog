@@ -33,6 +33,7 @@ describe("site footer logic", () => {
       const labels = socialLinks.map((l) => l.label);
       expect(labels).toContain("GitHub");
       expect(labels).toContain("X (Twitter)");
+      expect(labels).toContain("LinkedIn");
       expect(labels).toContain("Email");
     });
   });

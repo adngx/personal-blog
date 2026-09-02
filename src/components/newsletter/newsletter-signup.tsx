@@ -8,15 +8,27 @@ const WORKER_URL =
 
 type FormState = "idle" | "loading" | "success" | "error";
 
+interface NewsletterSignupProps {
+  /** Render inside a card surface (default) or as a plain full-width section. */
+  card?: boolean;
+}
+
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export function NewsletterSignup() {
+export function NewsletterSignup({ card = true }: NewsletterSignupProps = {}) {
   const [state, setState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const emailRef = useRef<HTMLInputElement>(null);
   const honeypotRef = useRef<HTMLInputElement>(null);
+
+  const sectionClassName = card ? "bg-card rounded-lg p-6" : "";
+  const headingClassName = card
+    ? "text-2xl font-bold sm:text-3xl"
+    : "text-3xl font-bold sm:text-4xl";
+  const paragraphClassName = "text-muted-foreground mt-3 text-base sm:text-lg";
+  const formClassName = card ? "mt-5" : "mt-6";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -71,12 +83,12 @@ export function NewsletterSignup() {
     return (
       <section
         aria-labelledby="newsletter-heading"
-        className="bg-card mx-auto max-w-[var(--container-prose)] rounded-lg p-6"
+        className={sectionClassName}
       >
-        <h2 id="newsletter-heading" className="text-2xl font-bold">
+        <h2 id="newsletter-heading" className={headingClassName}>
           Newsletter
         </h2>
-        <p className="text-muted-foreground mt-2">
+        <p className={paragraphClassName}>
           Check your email and click the confirmation link to complete your
           subscription.
         </p>
@@ -85,17 +97,14 @@ export function NewsletterSignup() {
   }
 
   return (
-    <section
-      aria-labelledby="newsletter-heading"
-      className="bg-card mx-auto max-w-[var(--container-prose)] rounded-lg p-6"
-    >
-      <h2 id="newsletter-heading" className="text-2xl font-bold">
+    <section aria-labelledby="newsletter-heading" className={sectionClassName}>
+      <h2 id="newsletter-heading" className={headingClassName}>
         Newsletter
       </h2>
-      <p className="text-muted-foreground mt-2">
+      <p className={paragraphClassName}>
         Early access to new posts, plus unfiltered notes and experiences.
       </p>
-      <form onSubmit={handleSubmit} className="mt-4" noValidate>
+      <form onSubmit={handleSubmit} className={formClassName} noValidate>
         <div className="flex flex-col gap-3 sm:flex-row">
           <label htmlFor="newsletter-email" className="sr-only">
             Email address
@@ -114,7 +123,7 @@ export function NewsletterSignup() {
             }
             className={cn(
               "border-border bg-background text-foreground placeholder:text-muted-foreground",
-              "h-9 w-full rounded-lg border px-3 text-sm",
+              "h-10 w-full rounded-lg border px-3 text-base",
               "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 focus-visible:outline-none",
               "disabled:cursor-not-allowed disabled:opacity-50",
             )}
@@ -142,7 +151,7 @@ export function NewsletterSignup() {
           <Button
             type="submit"
             disabled={state === "loading"}
-            className="shrink-0"
+            className="h-10 shrink-0 px-5 text-base"
           >
             {state === "loading" ? "Subscribing..." : "Subscribe"}
           </Button>
