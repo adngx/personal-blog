@@ -10,7 +10,7 @@ pubDate: 2026-07-15
 tags: ["beginners", "learning", "projects", "business", "react-native", "gtd"]
 ---
 
-_Note: this post is from an earlier phase of my journey — my current focus is cybersecurity._
+_Note: this post is from an earlier phase of my journey — my current focus is cybersecurity. [Here's the guide to how I'm breaking into it](https://adngx.com/posts/breaking-into-cybersecurity)._
 
 I'd been coding for maybe two months. I'd learned JavaScript, pivoted to AI agents in Python, and thought: I'm ready to build a business. Not a side project. A business.
 
