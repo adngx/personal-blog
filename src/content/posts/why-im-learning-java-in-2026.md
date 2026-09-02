@@ -11,7 +11,7 @@ tags: ["java", "spring-boot", "learning", "career", "beginners"]
 draft: false
 ---
 
-> **Update (August 2026):** This post is a decision record, and the decision has since changed. Cybersecurity is now my deep skill — Java and Spring Boot are frozen. The post about the pivot is coming; until then, the current direction is on the [About page](/about).
+> **Update (August 2026):** This post is a decision record, and the decision has since changed. Cybersecurity is now my deep skill — Java and Spring Boot are frozen. I wrote about the pivot in [A Guide for Breaking Into Cybersecurity](https://adngx.com/posts/breaking-into-cybersecurity); the current direction is also on the [About page](/about).
 
 > Java is the best trade-off between runtime performance, developer productivity, and maintainability.
 
