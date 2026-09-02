@@ -1,16 +1,18 @@
 import { describe, it, expect } from "vitest";
 import { formatDate } from "../../lib/format-date";
+import { socialLinks } from "../../data/social-links";
 
 /**
- * Homepage logic tests (spec 0005).
+ * Homepage logic tests.
  *
  * The Astro component at index.astro cannot be imported directly in Vitest.
  * These tests verify the pure logic the template depends on: post sorting,
- * featured post selection, remaining posts slicing, draft filtering,
- * empty state guards, and JSON-LD structured data construction.
+ * featured (latest) post selection, draft filtering, empty state guards,
+ * and JSON-LD structured data construction for the portfolio landing page
+ * (WebSite + Person; the Blog schema lives on the /blog index).
  *
- * Visual rendering (AC-1, AC-2, AC-5, AC-8, AC-9) is verified by
- * /check verify against the running dev server.
+ * Visual rendering is verified by /check verify against the running
+ * dev server.
  */
 
 type Post = {
@@ -35,7 +37,7 @@ const makePost = (overrides: Partial<Post> & { id: string }): Post => ({
   ...overrides,
 });
 
-describe("post sorting (AC-3)", () => {
+describe("post sorting", () => {
   it("sorts posts by pubDate descending, newest first", () => {
     const posts = [
       makePost({
@@ -110,7 +112,7 @@ describe("post sorting (AC-3)", () => {
   });
 });
 
-describe("featured post selection (AC-2)", () => {
+describe("featured post selection", () => {
   it("selects the first post after sorting as featured", () => {
     const posts = [
       makePost({
@@ -163,62 +165,19 @@ describe("featured post selection (AC-2)", () => {
   });
 });
 
-describe("remaining posts slicing (AC-3)", () => {
-  it("excludes the featured post from the feed", () => {
-    const posts = [
-      makePost({
-        id: "featured",
-        data: {
-          title: "Featured",
-          description: "",
-          pubDate: new Date(2026, 6, 13),
-          tags: [],
-          draft: false,
-        },
-      }),
-      makePost({
-        id: "post-2",
-        data: {
-          title: "Post 2",
-          description: "",
-          pubDate: new Date(2026, 6, 12),
-          tags: [],
-          draft: false,
-        },
-      }),
-      makePost({
-        id: "post-3",
-        data: {
-          title: "Post 3",
-          description: "",
-          pubDate: new Date(2026, 6, 11),
-          tags: [],
-          draft: false,
-        },
-      }),
-    ];
-
-    const sorted = [...posts].sort(
-      (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-    );
-    const remainingPosts = sorted.slice(1);
-
-    expect(remainingPosts).toHaveLength(2);
-    expect(remainingPosts.map((p) => p.id)).toEqual(["post-2", "post-3"]);
-  });
-
-  it("returns empty array when only one post exists", () => {
-    const posts = [makePost({ id: "only" })];
-    const remainingPosts = posts.slice(1);
-
-    expect(remainingPosts).toHaveLength(0);
-  });
-
-  it("returns empty array when no posts exist", () => {
+describe("empty state guards", () => {
+  it("hides the featured section when no posts exist", () => {
     const posts: Post[] = [];
-    const remainingPosts = posts.slice(1);
+    const featuredPost = posts[0] ?? null;
 
-    expect(remainingPosts).toHaveLength(0);
+    expect(featuredPost).toBeNull();
+  });
+
+  it("shows the featured section when at least one post exists", () => {
+    const posts = [makePost({ id: "one" })];
+    const featuredPost = posts[0] ?? null;
+
+    expect(featuredPost).not.toBeNull();
   });
 });
 
@@ -256,7 +215,7 @@ describe("draft filtering logic", () => {
     }),
   ];
 
-  it("filters out draft posts in production (AC-3)", () => {
+  it("filters out draft posts in production", () => {
     const isProd = true;
     const filtered = posts.filter((post) => !isProd || !post.data.draft);
 
@@ -272,135 +231,76 @@ describe("draft filtering logic", () => {
   });
 });
 
-describe("empty state guards (AC-4)", () => {
-  it("shows empty state when posts array is empty", () => {
-    const posts: Post[] = [];
-
-    expect(posts.length === 0).toBe(true);
-  });
-
-  it("hides empty state when posts exist", () => {
-    const posts = [makePost({ id: "one" })];
-
-    expect(posts.length === 0).toBe(false);
-  });
-
-  it("hides feed section when only one post exists (no remaining posts)", () => {
-    const posts = [makePost({ id: "only" })];
-    const remainingPosts = posts.slice(1);
-
-    expect(posts.length === 0).toBe(false);
-    expect(remainingPosts.length > 0).toBe(false);
-  });
-
-  it("shows feed section when multiple posts exist", () => {
-    const posts = [makePost({ id: "a" }), makePost({ id: "b" })];
-    const remainingPosts = posts.slice(1);
-
-    expect(posts.length === 0).toBe(false);
-    expect(remainingPosts.length > 0).toBe(true);
-  });
-});
-
-describe("JSON-LD structured data construction (AC-6)", () => {
+describe("JSON-LD structured data construction", () => {
   const siteUrl = "https://example.com";
+  const personId = new URL("/about/", siteUrl).href + "#person";
 
   it("builds WebSite schema with correct fields", () => {
     const jsonLd = {
       "@context": "https://schema.org",
-      "@graph": [{ "@type": "WebSite", name: "adngx", url: siteUrl }],
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": new URL("/", siteUrl).href + "#website",
+          name: "adngx",
+          url: siteUrl,
+          publisher: { "@id": personId },
+        },
+        {
+          "@type": "Person",
+          "@id": personId,
+          name: "Anh-Duc Nguyen",
+          url: siteUrl,
+        },
+      ],
     };
 
     const webSite = jsonLd["@graph"][0];
     expect(webSite["@type"]).toBe("WebSite");
     expect(webSite).toHaveProperty("name", "adngx");
     expect(webSite).toHaveProperty("url", siteUrl);
+    expect(webSite).toHaveProperty("publisher", { "@id": personId });
   });
 
-  it("builds Blog schema with blogPost entries", () => {
-    const posts = [
-      makePost({
-        id: "post-1",
-        data: {
-          title: "Post 1",
-          description: "Desc 1",
-          pubDate: new Date(2026, 6, 12),
-          tags: [],
-          draft: false,
-        },
-      }),
-      makePost({
-        id: "post-2",
-        data: {
-          title: "Post 2",
-          description: "Desc 2",
-          pubDate: new Date(2026, 6, 11),
-          tags: [],
-          draft: false,
-        },
-      }),
-    ];
-
-    const blogPosts = posts.map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.data.title,
-      datePublished: post.data.pubDate.toISOString(),
-      description: post.data.description,
-      url: new URL(`/posts/${post.id}`, siteUrl).href,
-    }));
+  it("builds Person schema with about-page @id and sameAs links", () => {
+    const expectedSameAs = socialLinks
+      .filter((link) => link.url.startsWith("http"))
+      .map((link) => link.url);
 
     const jsonLd = {
       "@context": "https://schema.org",
       "@graph": [
         { "@type": "WebSite", name: "adngx", url: siteUrl },
         {
-          "@type": "Blog",
-          name: "adngx",
+          "@type": "Person",
+          "@id": personId,
+          name: "Anh-Duc Nguyen",
           url: siteUrl,
-          blogPost: blogPosts,
+          description: "Learning cybersecurity in public",
+          sameAs: expectedSameAs,
         },
       ],
     };
 
-    const blog = jsonLd["@graph"][1];
-    expect(blog["@type"]).toBe("Blog");
-    expect(blog.blogPost).toHaveLength(2);
-    expect(blog.blogPost![0].headline).toBe("Post 1");
-    expect(blog.blogPost![0].url).toBe("https://example.com/posts/post-1");
-    expect(blog.blogPost![1].headline).toBe("Post 2");
+    const person = jsonLd["@graph"][1];
+    expect(person["@type"]).toBe("Person");
+    expect(person).toHaveProperty("@id", "https://example.com/about/#person");
+    expect(person.sameAs).toEqual(expectedSameAs);
+    expect(person.sameAs).not.toContain("mailto:contact@adngx.com");
   });
 
-  it("includes all published posts in JSON-LD, including featured", () => {
-    const posts = [
-      makePost({
-        id: "featured",
-        data: {
-          title: "Featured",
-          description: "",
-          pubDate: new Date(2026, 6, 13),
-          tags: [],
-          draft: false,
-        },
-      }),
-      makePost({
-        id: "other",
-        data: {
-          title: "Other",
-          description: "",
-          pubDate: new Date(2026, 6, 12),
-          tags: [],
-          draft: false,
-        },
-      }),
-    ];
+  it("does not embed the Blog schema on the homepage (it lives on /blog)", () => {
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "WebSite", name: "adngx", url: siteUrl },
+        { "@type": "Person", "@id": personId, name: "Anh-Duc Nguyen" },
+      ],
+    };
 
-    const blogPosts = posts.map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.data.title,
-    }));
-
-    expect(blogPosts).toHaveLength(2);
-    expect(blogPosts.map((p) => p.headline)).toEqual(["Featured", "Other"]);
+    const types = jsonLd["@graph"].map((entry) => entry["@type"]);
+    expect(types).toEqual(["WebSite", "Person"]);
+    expect(types).not.toContain("Blog");
   });
 
   it("produces valid JSON from the structured data object", () => {
@@ -408,7 +308,7 @@ describe("JSON-LD structured data construction (AC-6)", () => {
       "@context": "https://schema.org",
       "@graph": [
         { "@type": "WebSite", name: "adngx", url: siteUrl },
-        { "@type": "Blog", name: "adngx", url: siteUrl, blogPost: [] },
+        { "@type": "Person", "@id": personId, name: "Anh-Duc Nguyen" },
       ],
     };
 
@@ -420,7 +320,7 @@ describe("JSON-LD structured data construction (AC-6)", () => {
   });
 });
 
-describe("date formatting for display (AC-1, AC-2)", () => {
+describe("date formatting for display", () => {
   it("formats pubDate for the featured post time element", () => {
     const date = new Date(2026, 6, 13);
     expect(formatDate(date)).toBe("July 13, 2026");

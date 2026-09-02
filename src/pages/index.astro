@@ -2,15 +2,20 @@
 import Layout from "../layouts/Layout.astro";
 import { buttonVariants } from "../components/ui/button";
 import { NewsletterSignup } from "../components/newsletter/newsletter-signup";
+import SocialButtons from "../components/social-buttons.astro";
 import { formatDate } from "../lib/format-date";
+import { cn } from "../lib/utils";
 import { getCollection } from "astro:content";
 import { socialLinks } from "../data/social-links";
 import { AUTHOR_NAME, AUTHOR_DESCRIPTION } from "../data/identity";
 import { SITE_URL, SITE_NAME } from "../env";
+import myPhoto from "../assets/my-photo.png";
 
 const posts = (await getCollection("posts"))
   .filter((post) => !import.meta.env.PROD || !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featuredPost = posts[0] ?? null;
 
 const personId = new URL("/about/", SITE_URL).href + "#person";
 
@@ -23,20 +28,6 @@ const jsonLd = {
       name: SITE_NAME,
       url: SITE_URL,
       publisher: { "@id": personId },
-    },
-    {
-      "@type": "Blog",
-      "@id": new URL("/", SITE_URL).href + "#blog",
-      name: SITE_NAME,
-      url: SITE_URL,
-      author: { "@id": personId },
-      blogPost: posts.map((post) => ({
-        "@type": "BlogPosting",
-        headline: post.data.title,
-        datePublished: post.data.pubDate.toISOString(),
-        description: post.data.description,
-        url: new URL(`/posts/${post.id}`, SITE_URL).href,
-      })),
     },
     {
       "@type": "Person",
@@ -58,71 +49,77 @@ const jsonLd = {
 >
   <main id="main-content">
     <header
-      class="bg-card mx-auto max-w-[var(--container-prose)] rounded-lg p-6"
+      class="mx-auto max-w-[var(--container-wide)] px-6 pt-24 pb-24 sm:pt-32 sm:pb-32"
     >
-      <h1 class="text-4xl font-bold tracking-tight">Anh-Duc Nguyen</h1>
-      <p class="text-muted-foreground mt-2">Aspiring Security Engineer</p>
-      <p class="mt-4 max-w-prose">
-        I learn cybersecurity in public. Writing helps me think clearly, and
-        sharing publicly keeps me honest. If even one person finds a post
-        useful, that's a win:)
-      </p>
-      {
-        posts.length > 0 && (
-          <a
-            href={`/posts/${posts[0].id}`}
-            class={
-              buttonVariants({ variant: "default", size: "lg" }) +
-              " mt-6 hover:no-underline"
-            }
-          >
-            Read latest post
-          </a>
-        )
-      }
+      <div class="flex flex-col gap-10 sm:flex-row sm:items-center sm:gap-16">
+        <div class="min-w-0 flex-1">
+          <h1 class="text-5xl font-bold tracking-tight sm:text-6xl">
+            Anh-Duc Nguyen
+          </h1>
+          <p class="text-muted-foreground mt-3 text-lg sm:text-xl">
+            Aspiring Security Engineer
+          </p>
+          <p class="mt-6 max-w-2xl text-lg sm:text-xl">
+            I learn cybersecurity in public. Writing helps me think clearly, and
+            sharing publicly keeps me honest. If even one person finds a post
+            useful, that's a win:)
+          </p>
+          <div class="mt-8">
+            <SocialButtons />
+          </div>
+        </div>
+        <img
+          src={myPhoto.src}
+          alt="Portrait photo of Anh-Duc Nguyen"
+          class="mx-auto h-auto w-64 shrink-0 rounded-lg sm:mx-0 sm:w-80"
+        />
+      </div>
     </header>
 
-    <div class="mx-auto mt-8 max-w-[var(--container-prose)]">
-      <NewsletterSignup client:visible />
-    </div>
-
     {
-      posts.length === 0 ? (
-        <section class="mx-auto max-w-[var(--container-prose)] px-6 py-12 text-center">
-          <p class="text-muted-foreground text-lg">
-            No posts yet. Check back soon.
-          </p>
-        </section>
-      ) : (
+      featuredPost && (
         <section
-          class="mx-auto max-w-[var(--container-prose)] px-6 py-12"
-          aria-label="Latest content"
+          aria-labelledby="featured-heading"
+          class="mx-auto max-w-[var(--container-wide)] px-6 pb-24 sm:pb-32"
         >
-          <h2 class="text-2xl font-semibold">Latest content</h2>
-          <ul class="mt-6 flex flex-col gap-8">
-            {posts.map((post) => (
-              <li>
-                <a
-                  href={`/posts/${post.id}`}
-                  class="text-foreground text-lg font-semibold hover:underline"
-                >
-                  {post.data.title}
-                </a>
-                <time
-                  class="text-muted-foreground mt-1 block text-sm"
-                  datetime={post.data.pubDate.toISOString()}
-                >
-                  {formatDate(post.data.pubDate)}
-                </time>
-                <p class="text-muted-foreground mt-1">
-                  {post.data.description}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+            <h2 id="featured-heading" class="text-3xl font-bold sm:text-4xl">
+              Featured post
+            </h2>
+            <a
+              href="/blog"
+              class={cn(
+                buttonVariants({ variant: "default" }),
+                "h-10 px-5 text-base hover:no-underline",
+              )}
+            >
+              View all posts
+            </a>
+          </div>
+          <div class="mt-10">
+            <a
+              href={`/posts/${featuredPost.id}`}
+              class="text-foreground text-xl font-semibold break-words hover:underline sm:text-2xl"
+            >
+              {featuredPost.data.title}
+            </a>
+            <time
+              class="text-muted-foreground mt-3 block text-sm sm:text-base"
+              datetime={featuredPost.data.pubDate.toISOString()}
+            >
+              {formatDate(featuredPost.data.pubDate)}
+            </time>
+            <p class="text-muted-foreground mt-5 text-base sm:text-lg">
+              {featuredPost.data.description}
+            </p>
+          </div>
         </section>
       )
     }
+
+    <div class="mx-auto max-w-[var(--container-wide)] px-6 pb-24 sm:pb-32">
+      <NewsletterSignup client:visible card={false} />
+    </div>
   </main>
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

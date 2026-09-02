@@ -56,6 +56,12 @@ describe("social links data", () => {
       expect(email).toBeDefined();
       expect(email!.url).toContain("mailto:");
     });
+
+    it("includes LinkedIn", () => {
+      const linkedin = socialLinks.find((l) => l.label === "LinkedIn");
+      expect(linkedin).toBeDefined();
+      expect(linkedin!.url).toContain("linkedin.com/in/");
+    });
   });
 
   describe("SocialLink type", () => {
