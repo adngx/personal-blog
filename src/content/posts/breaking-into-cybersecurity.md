@@ -4,7 +4,7 @@ description: "A rambling, honest guide for breaking into cybersecurity - resourc
 summary: "Everything I've learned from researching how to break into cybersecurity. Please read the whole post."
 pubDate: 2026-09-01
 tags: ["cybersecurity", "career", "learning", "advice", "beginners"]
-draft: true
+draft: false
 ---
 
 ## Most important thing
@@ -116,7 +116,7 @@ Also ignore the advice from gurus on YouTube telling you to buy this course / bu
 
 Free courses are usually BS and used either for marketing or for funneling into paid things (this even applies to TryHackMe free rooms and many other things, at least in my opinion).
 
-Most knowledge is free and already existing on the Internet. Use websites like Anna's Archive to access books if you're too broke (although I recommend you at least donate to them or buy the books themselves. I don't promote using piracy websites).
+Most knowledge is free and already existing on the Internet. Use websites like Anna's Archive to access books if you're too broke, but try to buy books directly if you can.
 
 ## Soft skills
 
@@ -137,6 +137,8 @@ It can help with basic things like triaging alerts, filtering logs, etc... But i
 Also the gaps between frontier models are closing very fast now, and I believe that they are running out of training data, so they will probably hit the ceiling soon.
 
 Also remember that AI requires thousands of training images just to recognize a cat, while a human might just need only one. So, just know that AI is still much dumber than you :)
+
+The massive layoffs we've seen seem to just offset the huge hiring boom from a few years earlier, and AI did take away some roles, but not that many. And there's always a shortage for someone capable of doing the job.
 
 ## Now, what?
 
